@@ -1,0 +1,6 @@
+DI[ Titre | Texte ]
+EF[ IDdelEffet ]
+C1[ Titre | Texte / IDdeLaCarte ]
+C2[ Titre | Texte / IDdeLaCarte ]
+C3[ Titre | Texte / IDdeLaCarte ]
+C4[ Titre | Texte / IDdeLaCarte ]

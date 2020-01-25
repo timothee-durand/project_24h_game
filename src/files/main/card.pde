@@ -160,6 +160,15 @@ public class card{
     if( m_pos.y == 0 && m_pos.x == 0 )
       image(CardSpriteArray[HAnim], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     
+    push();
+    fill( 0, 0, 0, 255 );
+    text(m_C1[0], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    pop();
+    /*m_C1[1];*/
+    /*String[] m_C2 = { "null", "null", "null" };
+    String[] m_C3 = { "null", "null", "null" };
+    String[] m_C4 = { "null", "null", "null" };*/
+    
     choose();
   }
   
@@ -185,79 +194,46 @@ public class card{
         if( m_pos.x == 0 )
           m_pos.y = mouseY-m_BuffposMouse.y;
       }
-      /*else if( m_pos.x > 0 ) //droite
-      {
-        //println( " --" + str((exp((mouseX-m_BuffposMouse.x)/100))) + " : " + str(mouseX-m_BuffposMouse.x) +"-- ");
-        if( (exp((mouseX-m_BuffposMouse.x)/100)) < (mouseX-m_BuffposMouse.x)/2 )
-        {
-          m_pos.x = (mouseX-m_BuffposMouse.x)-(exp((mouseX-m_BuffposMouse.x)/100));
-          m_BuffReturnedAnswer = -1;
-          if( floor( m_pos.x/15 ) < 20)
-          {
-            HAnim = floor( m_pos.x/15 );
-          }
-        }
-        else
-        {
-          println("m_pos.x = "+ m_pos.x);
-          m_BuffReturnedAnswer = 1;
-        }
-        
-        m_pos.x = mouseX*m_dragLimit-width/2;
-      }
-      else if( m_pos.x < 0 ) //gauche
-      {
-        if( (exp(abs(mouseX-m_BuffposMouse.x)/100)) < (abs(mouseX-m_BuffposMouse.x))/2 )
-        {
-          m_pos.x = (mouseX-m_BuffposMouse.x)+(exp(abs(mouseX-m_BuffposMouse.x)/100));
-          m_BuffReturnedAnswer = -1;
-        }
-        else
-        {
-          //println("GAUCHE");
-          m_BuffReturnedAnswer = 0;
-        }
-      }
-      else if( m_pos.y > 0 ) //si on descend
-      {
-        if( (exp((mouseY-m_BuffposMouse.y)/100)) < ((mouseY-m_BuffposMouse.y))/2 )
-        {
-          m_pos.y = (mouseY-m_BuffposMouse.y)-(exp((mouseY-m_BuffposMouse.y)/100));
-          m_BuffReturnedAnswer = -1;
-        }
-        else
-        {
-          //println("BAS");
-          m_BuffReturnedAnswer = 3;
-        }
-      }
-      else if( m_pos.y < 0 ) //si on monte
-      {
-        if( (exp(abs(mouseY-m_BuffposMouse.y)/100)) < (abs(mouseY-m_BuffposMouse.y))/2 )
-        {
-          m_pos.y = (mouseY-m_BuffposMouse.y)+(exp(abs(mouseY-m_BuffposMouse.y)/100));
-          m_BuffReturnedAnswer = -1;
-        }
-        else
-        {
-          //println("HAUT");
-          m_BuffReturnedAnswer = 2;
-        }
-      }*/
-     else if( m_pos.x > 0 && m_pos.y == 0 ||  m_pos.x < 0 && m_pos.y == 0 ) //droite
+      
+     else if( m_pos.x > 0 && m_pos.y == 0 ||  m_pos.x < 0 && m_pos.y == 0 ) //droite / gauche
      {
         m_pos.x = (mouseX-displayWidth/2)*m_dragLimit;
         HAnim = ( abs( floor (mouseX-displayWidth/2)/((displayWidth/2)/20) ));
-        println(m_pos.x);
-        if( m_pos.x >= displayWidth/2-1 )
+        
+        if( m_pos.x >= displayWidth/2/2-1 )
         {
-          
+          println("Droite C2");
+          m_BuffReturnedAnswer = 1;
+        }
+        else if( m_pos.x <= 1 )
+        {
+          println("Gauche C1");
+          m_BuffReturnedAnswer = 0;
+        }
+        else
+        {
+          m_BuffReturnedAnswer = -1;
         }
      }
-     else if( m_pos.y > 0 && m_pos.x == 0  || m_pos.y < 0  && m_pos.x == 0) //droite
+     else if( m_pos.y > 0 && m_pos.x == 0  || m_pos.y < 0  && m_pos.x == 0) //haut / bas
      {
         m_pos.y = (mouseY-displayHeight/2)*m_dragLimit;
         VAnim = ( abs( ceil ( mouseY-displayHeight/2)/((displayHeight/2)/31) ));
+        
+        if( m_pos.y >= displayHeight/2/2-1 )
+        {
+          println("Bas C4");
+          m_BuffReturnedAnswer = 3;
+        }
+        else if( m_pos.y <= 1 )
+        {
+          println("Haut C3");
+          m_BuffReturnedAnswer = 2;
+        }
+        else
+        {
+          m_BuffReturnedAnswer = -1;
+        }
      }
       
       

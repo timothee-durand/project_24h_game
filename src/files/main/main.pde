@@ -1,9 +1,15 @@
 PImage persoL1;
 PImage persoL2;
 PImage persoL3;
-PImage persoR;
+
 PImage fondMsg;
 
+<<<<<<< HEAD
+=======
+PImage pnj;
+
+ //<>//
+>>>>>>> 05ade70ef08beb14c568367345a8a529a0b6f777
 int timerForTransition;
 
 String textMsg; 
@@ -28,9 +34,11 @@ void setup() {
    
    persoL3 = loadImage(path+"jose2.png");
    println("la");
+   
    fondMsg = loadImage(path+"background_message.gif");
    
    persoR = loadImage(path+"persoR.gif");
+
    
    
    textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
@@ -49,6 +57,7 @@ void setup() {
 
 void draw() {
   background(0);
+<<<<<<< HEAD
   //  playIntroScene();
 //  if (timerForTransition == 0){
   println(carte.checkChoice());
@@ -139,7 +148,10 @@ void getGoodPerso() {
 }
 
 void putPnjAtRight(String pnjName) {
+<<<<<<< HEAD
   String path ="/assets/ui/";
+=======
+>>>>>>> 05ade70ef08beb14c568367345a8a529a0b6f777
   pnj = loadImage(path + pnjName +  ".png");
   
   float widthPnj = 0.14*displayWidth;
@@ -151,15 +163,19 @@ void putPnjAtRight(String pnjName) {
 }
 
 void putBackground(String backgroundName) {
-  
+  println(path+backgroundName+".png");
   background = loadImage(path+backgroundName+".png");
+  
 
   image(background, 0, 0, displayWidth, displayHeight);
   
 }
 
 void changeCard(String cardId) {
+<<<<<<< HEAD
   carte = new card(cardId);
+=======
+>>>>>>> 05ade70ef08beb14c568367345a8a529a0b6f777
   backgroundName = carte.getBA_Name();
   println("backgroundname" + backgroundName);
   pnjName = carte.getPNJ_Name();

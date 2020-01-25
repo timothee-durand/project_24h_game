@@ -14,9 +14,8 @@ String path = "/assets/ui/";
 
 void setup() {
    
-   //fullScreen();
-   fullScreen(P2D);
-   smooth(0);
+   fullScreen();
+   noSmooth();
 
 
 
@@ -34,6 +33,9 @@ void setup() {
    textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
     age = 0;
    UneCarteTest = new card("0");
+   
+   font = createFont("ARCADECLASSIC.TTF", 32);
+   font2 = createFont("yoster.ttf", 32);
 }
 
 
@@ -42,12 +44,9 @@ void draw() {
   putBackground("background_classe");
   drawInterface();
   getGoodPerso();
-  putPnjAtRight("0"); //<>// //<>//
+  putPnjAtRight("0");
   UneCarteTest.draw();
-  
 
-  
- //<>//
 }
 
 
@@ -72,14 +71,13 @@ void drawInterface() {
   stroke(204, 102, 0);
   String textAge = "Age " + age + "  ans";
 
-  PFont font = createFont("ARCADECLASSIC.TTF", 32);
   textFont(font);
   textSize(0.05*displayHeight);
   text(textAge, posAgeX+0.10*displayWidth, posAgeY+0.05*displayHeight);
  
  //affichage message
-  PFont font2 = createFont("yoster.ttf", 32);
-  textFont(font2); 
+  
+ textFont(font2); 
  textSize(20);
  text(textMsg, persoR.width+0.02*displayWidth, 0.80*displayHeight, displayWidth - (persoR.width *2 + 0.02*displayWidth), 0.20*displayHeight);
   
@@ -124,7 +122,7 @@ void putPnjAtRight(String cardID) {
 }
 
 void putBackground(String nomBackground) {
-  PImage background;
+  
   background = loadImage(path+nomBackground+".png");
 
   image(background, 0, 0, displayWidth, displayHeight);

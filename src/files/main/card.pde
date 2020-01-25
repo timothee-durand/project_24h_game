@@ -34,6 +34,7 @@ public class card{
   {
     m_Id = ID;
     this.load( ID );
+    println("dks"); //<>//
   }
   
   //methodes
@@ -140,11 +141,13 @@ public class card{
     
   }
   println("Fin du chargement");
+
   }
   catch( java.lang.RuntimeException e )
   {
     println("Le fichier de projet a rencontré un problème ou est introuvable.");
   }
+      
   }
   
   public void draw()

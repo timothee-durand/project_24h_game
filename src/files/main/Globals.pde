@@ -11,3 +11,9 @@ PImage[] CardSpriteArray = new PImage[6*4];
 
 
 PImage pnj;
+
+int phaseInGame = 0; 
+
+boolean isMusiqueLaunched = false;
+
+Animation buttonPressMenu;

@@ -4,8 +4,13 @@ PImage persoL3;
 PImage persoR;
 PImage fondMsg;
 
+<<<<<<< HEAD
 int age;
 String textMsg; //<>// //<>//
+=======
+
+String textMsg; //<>//
+>>>>>>> ffe44a95181186ab389e24fed76dea5c75812acf
 ArrayList <PImage>persos;
 card UneCarteTest;
 
@@ -16,8 +21,6 @@ void setup() {
    
    fullScreen();
    noSmooth();
-
-
 
    persoL1 = loadImage(path+"jose2.png");
    
@@ -31,7 +34,6 @@ void setup() {
    
    
    textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
-    age = 0;
    UneCarteTest = new card("0");
    
    font = createFont("ARCADECLASSIC.TTF", 32);
@@ -69,7 +71,6 @@ void drawInterface() {
    textSize(32);
   fill(255);
   stroke(204, 102, 0);
-  String textAge = "Age " + age + "  ans";
 
   textFont(font);
   textSize(0.05*displayHeight);
@@ -95,16 +96,13 @@ void getGoodPerso() {
 
   float widthPerso = 0.14*displayWidth;
 
-  if ( (age >= 0) && (age < 9)) {
     image(persoL1, 0.03*displayWidth, displayHeight - (float(persoL1.height)/float(persoL1.width))*widthPerso, widthPerso ,(float(persoL1.height)/float(persoL1.width))*widthPerso );  
 
   }
   
-  if ( (age > 9) && (age < 20)) {
     image(persoL2,  0.03*displayWidth, displayHeight - (float(persoL2.height)/float(persoL2.width))*widthPerso, widthPerso ,(float(persoL2.height)/float(persoL2.width))*widthPerso );    
   }
   
-  if ( (age > 20)) {
     image(persoL3,  0.03*displayWidth, displayHeight - (float(persoL3.height)/float(persoL3.width))*widthPerso, widthPerso ,(float(persoL3.height)/float(persoL3.width))*widthPerso );  
   }
   

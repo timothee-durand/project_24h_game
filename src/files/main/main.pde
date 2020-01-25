@@ -33,11 +33,9 @@ void setup() {
    persoL2 = loadImage(path+"jose2.png");
    
    persoL3 = loadImage(path+"jose2.png");
-   println("la");
    
    fondMsg = loadImage(path+"background_message.gif");
    
-   persoR = loadImage(path+"persoR.gif");
 
    
    
@@ -75,6 +73,25 @@ void draw() {
   //else {
   // timerForTransition--; 
   //}
+=======
+////  playIntroScene();
+//if (timerForTransition == 0){
+//  while(carte.checkChoice() ==-1) {
+//  putBackground(backgroundName);
+// // drawInterface(); //<>// //<>//
+//  //getGoodPerso();
+//  //putPnjAtRight(pnjName);
+//  //carte.draw();
+//  } 
+  
+  
+//  changeCard(str(carte.checkChoice()));
+//} else {
+// timerForTransition--; 
+  
+//}
+    
+>>>>>>> 05ade70ef08beb14c568367345a8a529a0b6f777
     
      
 }
@@ -151,6 +168,7 @@ void putPnjAtRight(String pnjName) {
 <<<<<<< HEAD
   String path ="/assets/ui/";
 =======
+  String path ="/assets/cards/";
 >>>>>>> 05ade70ef08beb14c568367345a8a529a0b6f777
   pnj = loadImage(path + pnjName +  ".png");
   
@@ -175,6 +193,7 @@ void changeCard(String cardId) {
 <<<<<<< HEAD
   carte = new card(cardId);
 =======
+  carte = new card (cardId);
 >>>>>>> 05ade70ef08beb14c568367345a8a529a0b6f777
   backgroundName = carte.getBA_Name();
   println("backgroundname" + backgroundName);

@@ -15,11 +15,14 @@ PImage[] startButtonArray = new PImage[20];
 
 
 PImage pnj;
+PImage fondAccueil;
+PImage fondFin;
 
-int phaseInGame = 0; 
+int phaseInGame = 2; 
 
 boolean isMusiqueLaunched = false;
 
+int timer = 30;
 
 Animation buttonPressMenu;
 

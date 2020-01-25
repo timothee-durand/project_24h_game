@@ -11,7 +11,7 @@ void mainGameLoop () {
       putBackground(backgroundName);
       getGoodPerso();
       putPnjAtRight(pnjName);
-      drawInterface(); //<>//
+      drawInterface(); //<>// //<>//
       carte.draw();
 }
 
@@ -134,16 +134,16 @@ void playIntroScene() {
     //textAlign(CENTER);
     //textSize(0.035*displayHeight);
     //text("The time to Child", 0, 0.40*displayHeight, displayWidth , 0.20*displayHeight);
-
+    image(fondAccueil, 0, 0, displayWidth, displayHeight);
     
-    image(startButtonArray[G_anim_menu], (displayWidth- startButtonArray[G_anim_menu].width*5)/2, 0.80*displayHeight, 96*5, 10*5 );    
-    image(logo, (displayWidth - logo.width)/2, 0.10*displayHeight, 0.20*displayWidth, (float(logo.height)/float(logo.width))*(0.20*displayWidth));
+    image(startButtonArray[G_anim_menu], (displayWidth- startButtonArray[G_anim_menu].width*5)/2, 0.70*displayHeight, 96*5, 10*5 );    
+    image(logo, (displayWidth - 0.30*displayWidth)/2, 0.10*displayHeight, 0.30*displayWidth, (float(logo.height)/float(logo.width))*(0.30*displayWidth));
     
     textFont(font2); 
     textSize(20);
     textAlign(CENTER);
     //  buttonPressMenu.display((displayWidth - buttonPressMenu.getWidth())/2,0.70*displayHeight);
-    text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
+    //text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
   
     if( !animationButton )
     {
@@ -155,13 +155,17 @@ void playIntroScene() {
    // text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
   
   if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.45*displayHeight) && (mouseY<0.55*displayHeight)) {
-    fill(150);
-    text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
+    //fill(150);
+    //text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
     if(mousePressed == true) {
         phaseInGame = 1;
         endMusique.stop();
     }
   }
+  
+  if (keyPressed == true) {
+   phaseInGame = 1;
+  } 
   
   //if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.56*displayHeight) && (mouseY<0.65*displayHeight)) {
   //  fill(150);
@@ -181,36 +185,69 @@ void playIntroScene() {
       println(isMusiqueLaunched);
     }
     
+    image(fondFin, 0,0,displayWidth, displayHeight);
+    
       fill(255);
     textFont(font);
     textAlign(CENTER);
-    textSize(0.035*displayHeight);
+    textSize(0.05*displayHeight);
     text("The End", 0, 0.40*displayHeight, displayWidth , 0.20*displayHeight);
     
     
     textFont(font2); 
-     textSize(20);
+     textSize(50);
 
-    text("Rejouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
+    text("Rejouer", 0, 0.55*displayHeight, displayWidth, 0.20*displayHeight);
     
-    text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
+    text("Quitter", 0, 0.65*displayHeight, displayWidth, 0.20*displayHeight);
   
-  if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.45*displayHeight) && (mouseY<0.55*displayHeight)) {
+  if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.50*displayHeight) && (mouseY<0.60*displayHeight)) {
     fill(150);
-    text("Rejouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
+    text("Rejouer", 0, 0.55*displayHeight, displayWidth, 0.20*displayHeight);
     if(mousePressed == true) {
-        phaseInGame = 1;
-        endMusique.stop();
+        phaseInGame = 3;
+
     }
   }
   
-  if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.56*displayHeight) && (mouseY<0.65*displayHeight)) {
+  if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.61*displayHeight) && (mouseY<0.70*displayHeight)) {
     fill(150);
-    text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
+    text("Quitter", 0, 0.65*displayHeight, displayWidth, 0.20*displayHeight);
     if(mousePressed == true) {
         endMusique.stop();
         exit(); 
         
     }
   }
+}
+
+void playCredits() {
+  image(fondFin, 0,0,displayWidth, displayHeight);
+  
+        fill(255);
+    textFont(font);
+    textAlign(CENTER);
+    textSize(0.07*displayHeight);
+    text("Credits", 0, 0.20*displayHeight, displayWidth , 0.20*displayHeight);
+  
+    textSize(0.03*displayHeight);
+    text("Scenario", 0, 0.40*displayHeight, displayWidth , 0.20*displayHeight);
+    text("Design", 0, 0.60*displayHeight, displayWidth , 0.20*displayHeight);
+    text("Developpement", 0, 0.80*displayHeight, displayWidth , 0.20*displayHeight);
+  
+    textSize(0.2*displayHeight);
+    textFont(font2); 
+    text("Céleste DESBRUS, MMI1", 0, 0.50*displayHeight, displayWidth , 0.20*displayHeight);
+    text("Garion TANGUY, MMI1 / Etienne JUBILADO, MMI1 / Tania ANDRE, MMI1", 0, 0.70*displayHeight, displayWidth , 0.20*displayHeight);
+    text("Allan PINOT, MMI1 / Timothée DURAND, MMI1", 0, 0.90*displayHeight, displayWidth , 0.20*displayHeight);
+    
+    if ((keyPressed == true) || (mousePressed == true)) {
+      if (timer == 0) {
+        phaseInGame = 0;
+        endMusique.stop();
+      } else {
+        timer--;
+      }
+    }
+  
 }

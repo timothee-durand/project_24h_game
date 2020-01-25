@@ -6,17 +6,14 @@ SoundFile endMusique;
 
 PImage persoL1;
 PImage persoL2;
-PImage persoL3; //<>//
 
 PImage fondMsg;
-PImage fondAge; //<>//
 
 PImage logo;
 
 
 
 
- //<>//
 
 int timerForTransition;
 
@@ -48,6 +45,9 @@ void setup() {
    
    logo = loadImage(path + "logo.png");
    
+   fondAccueil = loadImage(path + "accueil.png");
+   fondFin = loadImage(path + "fin.png");
+   
    file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
    endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
    
@@ -56,7 +56,6 @@ void setup() {
 
    
    
-   textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
    println("Creation de la carte");
    carte = new card("0");
    println("carte loadé"); //<>//
@@ -77,7 +76,7 @@ void draw() {
 
 
     if(phaseInGame == 1) {
-      println("checkhoice :" + carte.checkChoice());
+    //  println("checkhoice :" + carte.checkChoice());
     if(int(carte.checkChoice()) == -1) {
       /*println(backgroundName);*/
       mainGameLoop();
@@ -99,6 +98,9 @@ void draw() {
       
     } else if (phaseInGame == 0 ) {
       playIntroScene();
+      
+    } else if (phaseInGame == 3 ) {
+      playCredits();
       
     }
 

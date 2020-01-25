@@ -161,7 +161,13 @@ public class card{
       image(CardSpriteArray[HAnim], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     
     push();
-    fill( 0, 0, 0, 255 );
+    fill( 0, 0, 0, 0 );
+    if( m_pos.x <= -displayWidth/2/2 )
+    {
+      fill( 0, 0, 0, 250 );
+    }
+    textAlign(CENTER);
+    text(m_C1[0], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     text(m_C1[0], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     pop();
     /*m_C1[1];*/

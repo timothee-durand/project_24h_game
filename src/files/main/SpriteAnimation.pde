@@ -41,6 +41,8 @@ void loadSprite()
     }
   }
   
+  //
+  
   
   /*PImage spritesheet = loadImage("http://www.nordenfelt-thegame.com/blog/wp-content/uploads/2011/11/explosion_transparent.png");
   int DIM = 5;
@@ -63,4 +65,40 @@ void loadSprite()
     background(f255, 255-f255, 0);
     image(sprites[frameCount%sprites.length], mouseX, mouseY);
   }*/
+}
+
+void loadMenuAnim()
+{
+  
+  startButtonSpritesheet = loadImage("assets/ui/start.png");
+
+  int sizeY = 20;
+  
+  int frameX = startButtonSpritesheet.width;
+  int frameY = startButtonSpritesheet.height/sizeY;
+  
+  
+  //horizontal
+  
+  short counter = 0;
+  for( int k = 0; k < sizeY; k++ )
+  {   
+      println(" entree bpicle");
+      startButtonArray[counter] = startButtonSpritesheet.get( /*startButtonArray[0].width*/0, k*frameY, frameX, frameY);
+      counter++;
+  }
+  
+}
+
+void AnimateMenu()
+{
+  while( phaseInGame == 0 ){
+    /**/
+    G_anim_menu++;
+    
+    if( G_anim_menu == 20 )
+      G_anim_menu = 0;
+    /*println(G_anim_menu);*/
+    delay(200);
+  }
 }

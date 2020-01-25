@@ -1,4 +1,4 @@
-DI[ La paix ! | Cet enmerdeur te lâche enfin la grappe, tu peux recommencer à faire tourner ton commerce paisiblement,  ]
+DI[ La paix ! | Cet emmerdeur te lâches enfin la grappe, tu peux recommencer à faire tourner ton commerce paisiblement, tu deviens un baron de la drogue.  ]
 EF[ IDdelEffet ]
 BA[ street ]
 PNJ[ PNJ_4 ]

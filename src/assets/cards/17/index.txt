@@ -1,0 +1,10 @@
+DI[ Essai sur un humain | La réanimation des êtres humains débouche sur une invasion de zombie planétaire, vous et vos compères mourrez. ]
+EF[ IDdelEffet ]
+BA[ dead ]
+PNJ[ PNJ_3 ]
+AG[ 16 ]
+C1[ end | end / end ]
+C2[ end | end / end ]
+C3[ end | end / end ]
+C4[ end | end / end ]
+

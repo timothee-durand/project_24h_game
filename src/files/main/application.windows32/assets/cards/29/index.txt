@@ -1,0 +1,10 @@
+DI[ Conversion | Tu rejoins le groupe de randonneur, ce sont en fait, des témoins de Jéova en vacances, vous échangez vos opinions et tu finis par te laisser convaincre par leurs idéologies et tu finiras ta vie avec eux. ]
+EF[ IDdelEffet ]
+BA[ nature ]
+PNJ[ PNJ_2 ]
+AG[ 33 ]
+C1[ end | end / end ]
+C2[ end | end / end ]
+C3[ end | end / end ]
+C4[ end | end / end ]
+

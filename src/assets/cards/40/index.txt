@@ -1,6 +1,6 @@
-DI[ C'était un piège !! | Le lieu de la livraison était un piège, la police te capture et tu finis t'as vie en prison. Tu y rencontre tout de même un petit copain avec qui tu finira tes jours.  ]
+DI[ C'était un piège !! | Le lieu de la livraison était un piège, la police te captures et tu finis t'as vie en prison. Tu y rencontres tout de même un petit copain avec qui tu finiras tes jours.  ]
 EF[ IDdelEffet ]
-BA[  ]
+BA[ corridor ]
 PNJ[ PNJ_4 ]
 AG[ 33 ]
 C1[ null | null / null ]

@@ -1,0 +1,10 @@
+DI[ Conservation de la découverte qui sera utilisée sur un moustique préhistorique | Vous utilisez la découverte que vous avez gardée secrètement sur un moustique préhistorique. Vous contribuez à la propagation d'une ancienne maladie qui décimera la plupart de la population mondiale avant de vous affecter. ]
+EF[ IDdelEffet ]
+BA[ dead ]
+AG[ 16 ]
+PNJ[ null ]
+C1[ end | end / end ]
+C2[ end | end / end ]
+C3[ end | end / end ]
+C4[ end | end / end ]
+

@@ -79,7 +79,7 @@ public class card{
       println("m_BA_Name : "+m_BA_Name);
     }
     
-    if( lines[i].contains("PNJ_Name[") )
+    if( lines[i].contains("PNJ[") )
     {
       m_PNJ_Name = simpleRead;
       println("m_PNJ_Name : "+m_PNJ_Name);

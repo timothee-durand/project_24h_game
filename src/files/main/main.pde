@@ -40,23 +40,29 @@ void setup() {
    font = createFont("ARCADECLASSIC.TTF", 32);
    font2 = createFont("yoster.ttf", 32);
    
+   changeCard("0");
+   
 }
 
 
 void draw() {
   background(0);
-  playIntroScene();
-  //while(carte.checkChoice() ==-1) {
-  //putBackground(backgroundName);
-  //drawInterface(); //<>// //<>//
-  //getGoodPerso();
-  //putPnjAtRight(pnjName);
-  //carte.draw();
-  //} 
+//  playIntroScene();
+if (timerForTransition == 0){
+  while(carte.checkChoice() ==-1) {
+  putBackground(backgroundName);
+  drawInterface(); //<>// //<>//
+  getGoodPerso();
+  putPnjAtRight(pnjName);
+  carte.draw();
+  } 
   
   
-  //changeCard(str(carte.checkChoice()));
-    
+  changeCard(str(carte.checkChoice()));
+} else {
+ timerForTransition--; 
+  
+}
     
     
   }
@@ -151,15 +157,19 @@ void putBackground(String backgroundName) {
 void changeCard(String cardId) {
   card carte = new card (cardId);
   backgroundName = carte.getBA_Name();
-  pnjName = carte.;
+  println("backgroundname" + backgroundName);
+  pnjName = carte.getPNJ_Name();
+  println("pnjName" + pnjName);
   textMsg = carte.getDi_Text(); //<>//
+  println("textMsg" + textMsg);
   titleMsg = carte.getDi_Title();
+  println("titleMsg " + titleMsg );
   G_player_age = int(carte.getAG_Age());
   timerForTransition = 30;
 }
 
-void playIntroScene() {
- putBackground();
+//void playIntroScene() {
+// putBackground();
   
   
-}
+//}

@@ -75,11 +75,11 @@ void draw() {
 
 
     if(phaseInGame == 1) {
-    if(carte.checkChoice() == -1) {
+    if(int(carte.checkChoice()) == -1) {
       /*println(backgroundName);*/
       mainGameLoop();
     
-    } else if (str(carte.checkChoice()) == "null") {
+    } else if (new String(carte.checkChoice()) == "null") {
       file.stop();
       isMusiqueLaunched = false;
       showEndPannel();
@@ -225,7 +225,7 @@ void getGoodPerso() {
 
 void putPnjAtRight(String pnjName) {
   
-  if(pnjName == "nul") {
+  if(pnjName != "null") {
 
     String path ="/assets/ui/";
   
@@ -265,13 +265,11 @@ void changeCard(String cardId) {
   carte = new card (cardId);
 
   backgroundName = carte.getBA_Name();
-  println("backgroundname" + backgroundName);
+
   pnjName = carte.getPNJ_Name();
-  println("pnjName" + pnjName);
+
   textMsg = carte.getDi_Text(); 
-  println("textMsg" + textMsg);
   titleMsg = carte.getDi_Title();
-  println("titleMsg " + titleMsg );
   G_player_age = int(carte.getAG_Age());
   timerForTransition = 30;
 }
@@ -280,7 +278,6 @@ void playIntroScene() {
     if( isMusiqueLaunched == false) {
       endMusique.play();
       isMusiqueLaunched = true;
-      println(isMusiqueLaunched);
     }
         fill(255);
     //textFont(font);

@@ -138,20 +138,42 @@ public class card{
         m_BuffposMouse.y = mouseY;
         m_BuffActivateDragging = true;
       }
-      
+       
       if( m_pos.x == 0 && m_pos.y == 0 )
       {
         m_pos.x = mouseX-m_BuffposMouse.x;
         m_pos.y = mouseY-m_BuffposMouse.y;
       }
-      else if( m_pos.y == 0 && m_pos.x < m_dragLimit || m_pos.y == 0 && m_pos.x > -m_dragLimit) //droite | gauche
+      else if( m_pos.x > 0 ) //droite
       {
-        m_pos.x = mouseX-m_BuffposMouse.x;
+        /*println( " --" + str((exp((mouseX-m_BuffposMouse.x)/100))) + " : " + str(mouseX-m_BuffposMouse.x) +"-- ");*/
+        if( (exp((mouseX-m_BuffposMouse.x)/100)) < (mouseX-m_BuffposMouse.x)/2 )
+        {
+          m_pos.x = (mouseX-m_BuffposMouse.x)-(exp((mouseX-m_BuffposMouse.x)/100));
+        }
       }
-      else if( m_pos.x == 0 && m_pos.y < m_dragLimit || m_pos.x == 0 && m_pos.y > -m_dragLimit )
+      else if( m_pos.x < 0 ) //dgauche
+      {
+        if( (exp(abs(mouseX-m_BuffposMouse.x)/100)) < (abs(mouseX-m_BuffposMouse.x))/2 )
+        {
+          m_pos.x = (mouseX-m_BuffposMouse.x)+(exp(abs(mouseX-m_BuffposMouse.x)/100));
+        }
+      }
+      else if( m_pos.y > 0 )
       {
         m_pos.y = mouseY-m_BuffposMouse.y;
       }
+      else if( m_pos.y < 0 )
+      {
+        m_pos.y = mouseY-m_BuffposMouse.y;
+      }
+      
+      /*
+      if( m_pos.y < m_dragLimit && m_pos.y > -m_dragLimit && m_pos.x < m_dragLimit && m_pos.x > -m_dragLimit  )
+      {
+        m_pos.x = (mouseX-m_BuffposMouse.x)/exp(sqrt(m_pos.y*m_pos.y));
+        m_pos.y = (mouseY-m_BuffposMouse.y)/exp(sqrt(m_pos.x*m_pos.x));
+      }*/
       
       
     }

@@ -17,5 +17,3 @@ PImage pnj;
 int phaseInGame = 0; 
 
 boolean isMusiqueLaunched = false;
-
-Animation buttonPressMenu;

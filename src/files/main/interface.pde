@@ -15,15 +15,7 @@ void mainGameLoop () {
       carte.draw();
 }
 
-
-  
-  
-
-
-
-
-        
-        
+      
 void drawInterface() {
     //ajout des personnage sur les cotes
    // getGoodPerso();
@@ -144,13 +136,20 @@ void playIntroScene() {
     //text("The time to Child", 0, 0.40*displayHeight, displayWidth , 0.20*displayHeight);
 
     
+    image(startButtonArray[G_anim_menu], (displayWidth- startButtonArray[G_anim_menu].width*5)/2, 0.80*displayHeight, 96*5, 10*5 );    
     image(logo, (displayWidth - logo.width)/2, 0.10*displayHeight, 0.20*displayWidth, (float(logo.height)/float(logo.width))*(0.20*displayWidth));
     
     textFont(font2); 
     textSize(20);
     textAlign(CENTER);
-
-  text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
+    //  buttonPressMenu.display((displayWidth - buttonPressMenu.getWidth())/2,0.70*displayHeight);
+    text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
+  
+    if( !animationButton )
+    {
+      thread("AnimateMenu");
+      animationButton = true;
+    }
    
     
    // text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);

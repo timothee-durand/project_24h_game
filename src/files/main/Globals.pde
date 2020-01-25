@@ -20,6 +20,7 @@ int phaseInGame = 0;
 
 boolean isMusiqueLaunched = false;
 
+
 Animation buttonPressMenu;
 
 int G_anim_menu = 0;

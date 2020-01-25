@@ -92,9 +92,6 @@ void draw() {
       changeCard(carte.checkChoice());
       
     }
-    else {
-      changeCard(carte.checkChoice());
-    }
     
     } else if(phaseInGame == 2) {
       file.stop();
@@ -104,50 +101,10 @@ void draw() {
       playIntroScene();
       
     }
+
 // println("sortie de boucle");
-
     
-
-    
-     
 }
   
 
-    image(startButtonArray[G_anim_menu], (displayWidth- startButtonArray[G_anim_menu].width*5)/2, 0.80*displayHeight, 96*5, 10*5 );    
-    image(logo, (displayWidth - logo.width)/2, 0.10*displayHeight, 0.20*displayWidth, (float(logo.height)/float(logo.width))*(0.20*displayWidth));
-    
-    textFont(font2); 
-    textSize(20);
-    textAlign(CENTER);
-    //  buttonPressMenu.display((displayWidth - buttonPressMenu.getWidth())/2,0.70*displayHeight);
-    text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
-  
-    if( !animationButton )
-    {
-      thread("AnimateMenu");
-      animationButton = true;
-    }
-   
-    
-   // text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
-  
-  if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.45*displayHeight) && (mouseY<0.55*displayHeight)) {
-    fill(150);
-    text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
-    if(mousePressed == true) {
-        phaseInGame = 1;
-        endMusique.stop();
-    }
-  }
-  
-  //if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.56*displayHeight) && (mouseY<0.65*displayHeight)) {
-  //  fill(150);
-  //  text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
-  //  if(mousePressed == true) {
-  //      endMusique.stop();
-  //      exit(); 
-        
-  //  }
-  }
-  
   

@@ -167,8 +167,8 @@ public class card{
       fill( 0, 0, 0, 250 );
     }
     textAlign(CENTER);
-    text(m_C1[0], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
-    text(m_C1[0], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    text(m_C1[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    text(m_C1[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     pop();
     /*m_C1[1];*/
     /*String[] m_C2 = { "null", "null", "null" };
@@ -211,7 +211,7 @@ public class card{
           println("Droite C2");
           m_BuffReturnedAnswer = 1;
         }
-        else if( m_pos.x <= 1 )
+        else if(  m_pos.x <= -displayWidth/2/2 )
         {
           println("Gauche C1");
           m_BuffReturnedAnswer = 0;
@@ -231,7 +231,7 @@ public class card{
           println("Bas C4");
           m_BuffReturnedAnswer = 3;
         }
-        else if( m_pos.y <= 1 )
+        else if(  m_pos.y <= -displayHeight/2/2  )
         {
           println("Haut C3");
           m_BuffReturnedAnswer = 2;

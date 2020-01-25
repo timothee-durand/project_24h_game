@@ -6,14 +6,17 @@ SoundFile endMusique;
 
 PImage persoL1;
 PImage persoL2;
+PImage persoL3; //<>// //<>//
 
 PImage fondMsg;
+PImage fondAge; //<>// //<>//
 
 PImage logo;
 
 
 
 
+ //<>// //<>//
 
 int timerForTransition;
 
@@ -56,6 +59,7 @@ void setup() {
 
    
    
+   textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte"; //<>//
    println("Creation de la carte");
    carte = new card("0");
    println("carte loadé"); //<>//

@@ -1,0 +1,10 @@
+DI[ Essai sur un chien | Le chien retrouve la vie et se comporte normalement. ]
+EF[ IDdelEffet ]
+BA[ Corridors ]
+PNJ [ PNJ_3 ]
+AG[ 16 ]
+C1[ Revente de la découverte à une compagnie publique | Vous décidez de revendre la découverte à une compagnie publique. / 15 ]
+C2[ Conservation de la découverte qui sera utilisée sur un moustique préhistorique. | Vous gardez la découverte secrètement afin de l'utiliser sur un moustique préhistorique. / 16 ]
+C3[ null | null / null ]
+C4[ null | null / null ]
+

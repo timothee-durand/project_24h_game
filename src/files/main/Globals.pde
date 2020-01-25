@@ -28,3 +28,8 @@ Animation buttonPressMenu;
 
 int G_anim_menu = 0;
 boolean animationButton = false;
+
+boolean isPlayCarton = false;
+
+PImage backgroundCarton;
+PImage parchemin;

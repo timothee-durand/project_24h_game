@@ -71,6 +71,7 @@ void drawInterface() {
    textSize(32);
   fill(255);
   stroke(204, 102, 0);
+  String textAge = "Age " + G_player_age + "  ans";
 
   textFont(font);
   textSize(0.05*displayHeight);
@@ -96,13 +97,16 @@ void getGoodPerso() {
 
   float widthPerso = 0.14*displayWidth;
 
+  if ( (G_player_age >= 0) && (G_player_age < 9)) {
     image(persoL1, 0.03*displayWidth, displayHeight - (float(persoL1.height)/float(persoL1.width))*widthPerso, widthPerso ,(float(persoL1.height)/float(persoL1.width))*widthPerso );  
 
   }
   
+  if ( (G_player_age > 9) && (G_player_age < 20)) {
     image(persoL2,  0.03*displayWidth, displayHeight - (float(persoL2.height)/float(persoL2.width))*widthPerso, widthPerso ,(float(persoL2.height)/float(persoL2.width))*widthPerso );    
   }
   
+  if ( (G_player_age > 20)) {
     image(persoL3,  0.03*displayWidth, displayHeight - (float(persoL3.height)/float(persoL3.width))*widthPerso, widthPerso ,(float(persoL3.height)/float(persoL3.width))*widthPerso );  
   }
   

@@ -161,6 +161,7 @@ public class card{
       image(CardSpriteArray[HAnim], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     
     push();
+    textLeading(30);
     fill( 0, 0, 0, 0 );
     if( m_pos.x <= -displayWidth/2/2 || m_pos.y <= -displayHeight/2/2 || m_pos.x >= displayWidth/2/2-1|| m_pos.y >= displayHeight/2/2-1 )
     {

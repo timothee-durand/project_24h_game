@@ -18,7 +18,7 @@ PImage pnj;
 PImage fondAccueil;
 PImage fondFin;
 
-int phaseInGame = 2; 
+int phaseInGame = 0; 
 
 boolean isMusiqueLaunched = false;
 

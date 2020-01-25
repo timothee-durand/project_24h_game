@@ -1,0 +1,10 @@
+DI[ ÉPANOUISSEMENT | Le métier de conférencier te va à merveille, tu rencontre une jeune conférencière et l'épouse, tu fonde une famille et continuera ton boulot jusqu'à ta mort. ]
+EF[ IDdelEffet ]
+BA[ librairy ]
+PNJ[ PNJ_1 ]
+AG[ 80 ]
+C1[ null | null / null ]
+C2[ null | null / null ]
+C3[ null | null / null ]
+C4[ null | null / null ]
+

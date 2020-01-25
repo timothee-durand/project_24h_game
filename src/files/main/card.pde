@@ -161,11 +161,17 @@ public class card{
       }
       else if( m_pos.y > 0 )
       {
-        m_pos.y = mouseY-m_BuffposMouse.y;
+        if( (exp((mouseY-m_BuffposMouse.y)/100)) < ((mouseY-m_BuffposMouse.y))/2 )
+        {
+          m_pos.y = (mouseY-m_BuffposMouse.y)-(exp((mouseY-m_BuffposMouse.y)/100));
+        }
       }
       else if( m_pos.y < 0 )
       {
-        m_pos.y = mouseY-m_BuffposMouse.y;
+        if( (exp(abs(mouseY-m_BuffposMouse.y)/100)) < (abs(mouseY-m_BuffposMouse.y))/2 )
+        {
+          m_pos.y = (mouseY-m_BuffposMouse.y)+(exp(abs(mouseY-m_BuffposMouse.y)/100));
+        }
       }
       
       /*

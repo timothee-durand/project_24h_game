@@ -7,13 +7,14 @@ public class card{
   String m_Di_Text;
   String m_BA_Name; //background
   String m_AG_Age; //age perso
+  String m_PNJ_Name; //nom pnj
   
   String m_Ef_effect;
   
-  String[] m_C1 = { "", "", "" };
-  String[] m_C2 = { "", "", "" };
-  String[] m_C3 = { "", "", "" };
-  String[] m_C4 = { "", "", "" };
+  String[] m_C1 = { "null", "null", "null" };
+  String[] m_C2 = { "null", "null", "null" };
+  String[] m_C3 = { "null", "null", "null" };
+  String[] m_C4 = { "null", "null", "null" };
   
   PImage m_img;
   
@@ -24,6 +25,7 @@ public class card{
   
   String m_Id = "";
   short m_dragLimit = 100;
+  short m_BuffReturnedAnswer = -1;
   short m_ReturnedAnswer = -1;
   
   //constructeur
@@ -76,6 +78,18 @@ public class card{
       m_BA_Name = simpleRead;
       println("m_BA_Name : "+m_BA_Name);
     }
+    
+    if( lines[i].contains("PNJ_Name[") )
+    {
+      m_PNJ_Name = simpleRead;
+      println("m_PNJ_Name : "+m_PNJ_Name);
+    }
+    
+    if( lines[i].contains("AG[") ) //age
+    {
+      m_AG_Age = simpleRead;
+      println("m_AG_Age : "+m_AG_Age);
+    };
     
     if( lines[i].contains("C1[") )
     {
@@ -164,12 +178,12 @@ public class card{
         if( (exp((mouseX-m_BuffposMouse.x)/100)) < (mouseX-m_BuffposMouse.x)/2 )
         {
           m_pos.x = (mouseX-m_BuffposMouse.x)-(exp((mouseX-m_BuffposMouse.x)/100));
-          m_ReturnedAnswer = -1;
+          m_BuffReturnedAnswer = -1;
         }
         else
         {
-          println("DROIT");
-          m_ReturnedAnswer = 0;
+          //println("DROIT");
+          m_BuffReturnedAnswer = 0;
         }
       }
       else if( m_pos.x < 0 ) //dgauche
@@ -177,12 +191,12 @@ public class card{
         if( (exp(abs(mouseX-m_BuffposMouse.x)/100)) < (abs(mouseX-m_BuffposMouse.x))/2 )
         {
           m_pos.x = (mouseX-m_BuffposMouse.x)+(exp(abs(mouseX-m_BuffposMouse.x)/100));
-          m_ReturnedAnswer = -1;
+          m_BuffReturnedAnswer = -1;
         }
         else
         {
-          println("GAUCHE");
-          m_ReturnedAnswer = 1;
+          //println("GAUCHE");
+          m_BuffReturnedAnswer = 1;
         }
       }
       else if( m_pos.y > 0 ) //si on descend
@@ -190,12 +204,12 @@ public class card{
         if( (exp((mouseY-m_BuffposMouse.y)/100)) < ((mouseY-m_BuffposMouse.y))/2 )
         {
           m_pos.y = (mouseY-m_BuffposMouse.y)-(exp((mouseY-m_BuffposMouse.y)/100));
-          m_ReturnedAnswer = -1;
+          m_BuffReturnedAnswer = -1;
         }
         else
         {
-          println("BAS");
-          m_ReturnedAnswer = 3;
+          //println("BAS");
+          m_BuffReturnedAnswer = 3;
         }
       }
       else if( m_pos.y < 0 ) //si on monte
@@ -203,12 +217,12 @@ public class card{
         if( (exp(abs(mouseY-m_BuffposMouse.y)/100)) < (abs(mouseY-m_BuffposMouse.y))/2 )
         {
           m_pos.y = (mouseY-m_BuffposMouse.y)+(exp(abs(mouseY-m_BuffposMouse.y)/100));
-          m_ReturnedAnswer = -1;
+          m_BuffReturnedAnswer = -1;
         }
         else
         {
-          println("HAUT");
-          m_ReturnedAnswer = 2;
+          //println("HAUT");
+          m_BuffReturnedAnswer = 2;
         }
       }
       
@@ -221,7 +235,7 @@ public class card{
       
       
     }
-    else if( m_ReturnedAnswer == -1 )
+    else if( m_BuffReturnedAnswer == -1 )
     {
       m_pos.x = 0;
       m_pos.y = 0;
@@ -229,6 +243,7 @@ public class card{
     }
     else
     {
+      m_ReturnedAnswer = m_BuffReturnedAnswer;
       m_pos.x = 0;
       m_pos.y = 0;
       m_BuffActivateDragging = false;
@@ -336,6 +351,11 @@ public class card{
   String getAG_Age()
   {
       return m_AG_Age;
+  }
+  
+  String getPNJ_Name()
+  {
+    return m_PNJ_Name;
   }
   
   

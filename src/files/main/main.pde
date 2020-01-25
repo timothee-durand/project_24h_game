@@ -4,15 +4,15 @@ PImage persoL3;
 PImage persoR;
 PImage fondMsg;
 
-<<<<<<< HEAD
-int age;
-String textMsg; //<>// //<>//
-=======
+
+int age; //<>//
+
 
 String textMsg; //<>//
->>>>>>> ffe44a95181186ab389e24fed76dea5c75812acf
+
 ArrayList <PImage>persos;
 card UneCarteTest;
+short thisCardId = 0;
 
 String path = "/assets/ui/";
 
@@ -43,12 +43,21 @@ void setup() {
 
 void draw() {
   background(0);
-  putBackground("background_classe");
+  
+  while(UneCarteTest.checkChoice() ==-1) {
+  putBackground(thisCardId);
   drawInterface(); //<>// //<>//
   getGoodPerso();
-  putPnjAtRight("0");
+  putPnjAtRight(thisCardId);
   UneCarteTest.draw();
-
+  }
+  
+  
+  
+  
+  
+  
+  
 }
 
 
@@ -112,7 +121,7 @@ void getGoodPerso() {
   
 }
 
-void putPnjAtRight(String cardID) {
+void putPnjAtRight(short cardID) {
   String path ="/assets/cards/";
   PImage pnj = loadImage(path + cardID + "/img/" + "img.jpg");
   
@@ -124,9 +133,9 @@ void putPnjAtRight(String cardID) {
   
 }
 
-void putBackground(String nomBackground) {
+void putBackground(short cardId) {
   
-  background = loadImage(path+nomBackground+".png");
+  background = loadImage(path+cardId+".png");
 
   image(background, 0, 0, displayWidth, displayHeight);
 }

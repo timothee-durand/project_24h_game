@@ -77,7 +77,7 @@ void putPnjAtRight(String pnjName) {
   
   if(pnjName != "null") {
 
-    String path ="/assets/ui/";
+    String path ="/assets/Personnages/";
   
     pnj = loadImage(path + pnjName +  ".png");
     
@@ -99,7 +99,7 @@ void putBackground(String backgroundName) {
     backgroundName = "street";
   }
   
-  background = loadImage(path+backgroundName+".png");
+  background = loadImage(path+"/Décors/"+backgroundName+".png");
   
 
   image(background, 0, 0, displayWidth, displayHeight);

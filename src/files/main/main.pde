@@ -28,7 +28,7 @@ card carte;
 String backgroundName;
 String pnjName;
 
-String path = "/assets/ui/";
+String path = "/assets/";
 
 
 void setup() {
@@ -36,20 +36,21 @@ void setup() {
    fullScreen();
    noSmooth();
 
-   persoL1 = loadImage(path+"jose2.png");
+  
+   persoL1 = loadImage(path+"/Personnages/Héros/"+"child_heros.png");
    
-   persoL2 = loadImage(path+"jose2.png");
+   persoL2 = loadImage(path+"/Personnages/Héros/"+"adulte_heros.png");
    
-   persoL3 = loadImage(path+"jose2.png");
+   persoL3 = loadImage(path+"/Personnages/Héros/"+"ado_heros.png");
    
-   fondMsg = loadImage(path+"background_message.gif");
+   fondMsg = loadImage(path+"/Autres/"+"Tableau_discussion.png");
    
-   fondAge = loadImage(path+"Fond_Age.png");
+   fondAge = loadImage(path+"/Autres/"+"Fond_Age.png");
    
-   logo = loadImage(path + "logo.png");
+   logo = loadImage(path + "/Autres/" + "Logo.png");
    
-   fondAccueil = loadImage(path + "accueil.png");
-   fondFin = loadImage(path + "fin.png");
+   fondAccueil = loadImage(path +"/Décors/"+ "fond_accueil.png");
+   fondFin = loadImage(path +"/Décors/"+ "fond_fin.png");
    
    file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
    endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
@@ -58,13 +59,13 @@ void setup() {
 
 
    
-   
-   textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte"; //<>//
+    //<>//
+   textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
    println("Creation de la carte");
    carte = new card("0");
    println("carte loadé"); //<>//
-   font = createFont("8-bit-pusab.ttf", 32);
-   font2 = createFont("manaspc.ttf", 32);
+   font = createFont(path+"/fonts/"+"8-bit-pusab.ttf", 32);
+   font2 = createFont(path+"/fonts/"+"manaspc.ttf", 32);
    
    changeCard("0");
    file.loop();

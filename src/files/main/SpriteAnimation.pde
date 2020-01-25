@@ -70,7 +70,7 @@ void loadSprite()
 void loadMenuAnim()
 {
   
-  startButtonSpritesheet = loadImage("assets/ui/start.png");
+  startButtonSpritesheet = loadImage("assets/Autres/Start.png");
 
   int sizeY = 20;
   

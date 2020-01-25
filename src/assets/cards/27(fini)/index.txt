@@ -1,0 +1,10 @@
+DI[ Une belle balade. | Pendant t'as balade tu connais un coins sympa, avec une cascade, propice à l'insipration, mais tu aperçois un groupe de randonneur une envi de discuter te tiraille. ]
+EF[ IDdelEffet ]
+BA[ nature ]
+PNJ[ PNJ_2 ]
+AG[ 33 ]
+C1[ La cascade | Le souvenir de la cascade prend le deçu, tu va t'y promener. / 29 ]
+C2[ Une bonne discussion | L'envie d'avoir un contact humains dans t'as période de remise en question te semble important, tu va à la rencontre des randonneurs. / 28 ]
+C3[ null | null / null ]
+C4[ null | null / null ]
+

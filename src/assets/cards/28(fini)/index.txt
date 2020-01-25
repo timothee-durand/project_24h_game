@@ -1,0 +1,10 @@
+DI[ L'accident bête... | Tu souhaite aller boire l'eau de la cascade, mais tu t'es un peu foiré, la mousse mouillé sa glisse, tu la compris peu avant que ton crâne frappe un poisson, le choc avec cette matière si spécial tu fais tomber dans les pommes, et dans l'eau c'est embétant. ]
+EF[ IDdelEffet ]
+BA[ nature ]
+PNJ[ null ]
+AG[ 33 ]
+C1[ null | null / null ]
+C2[ null | null / null ]
+C3[ null | null / null ]
+C4[ null | null / null ]
+

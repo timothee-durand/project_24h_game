@@ -1,0 +1,10 @@
+DI[ Un bouquin qui frappe ! | Tu deviens un écrivain renommé traitant des sujets critiques et tu continue à écrire des livres de ce type, pris dans cette activité passionante, tu ne prend pas le temps de fonder une famille mais vie une vie pleins de rencontres et heureuse. ]
+EF[ IDdelEffet ]
+BA[ librairy ]
+PNJ[ null ]
+AG[ 76 ]
+C1[ titre | texte / 1 ]
+C2[ titre | texte / 2 ]
+C3[ null | null / null ]
+C4[ null | null / null ]
+

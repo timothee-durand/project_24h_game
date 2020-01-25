@@ -2,7 +2,7 @@ DI[ Surdoué ? | Tes professeurs te déclare surdoué et te propulse directement
 EF[ IDdelEffet ]
 BA[ classroom ]
 AG[ 8 ]
-PNJ[PNJ_2]
+PNJ[ PNJ_2 ]
 C1[ Oui ! | Tu ne souhaite pas traîner avec des enfants avec un QI si faibles, plus tu vas vite plus tu aura le temps de refaire t'as vie ! / 6 ]
 C2[ Non... | Tu te rappelle que les cours du collège sont simples mais apportes tout de même des notions importantes que tu as oublié./ 7 ]
 C3[ null | null / null ]

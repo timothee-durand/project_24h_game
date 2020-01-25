@@ -2,6 +2,7 @@
 void loadSprite()
 {
   CardSpritesheet = loadImage("assets/entity/flipH.png");
+  VCardSpritesheet = loadImage("assets/entity/flipV.png");
   
   int sizeX = 6;
   int sizeY = 4;
@@ -9,11 +10,35 @@ void loadSprite()
   int frameX = CardSpritesheet.width/sizeX;
   int frameY = CardSpritesheet.height/sizeY;
   
-  for( int i = 0; i < CardSpriteArray.length; i++ )
+  
+  //horizontal
+  
+  short counter = 0;
+  for( int k = 0; k < sizeY; k++ )
   { 
-    int x = i%sizeX*frameX;
-    int y = i/sizeY*frameY;
-    CardSpriteArray[i] = CardSpritesheet.get(x, y, frameX, frameY);
+    for( int i = 0; i < sizeX; i++ )
+    { 
+      CardSpriteArray[counter] = CardSpritesheet.get(i*frameX, k*frameY, frameX, frameY);
+      counter++;
+    }
+  }
+  
+  //vertical
+  
+  sizeX = 7;
+  sizeY = 5;
+  
+  frameX = VCardSpritesheet.width/sizeX;
+  frameY = VCardSpritesheet.height/sizeY;
+  
+  counter = 0;
+  for( int k = 0; k < sizeY; k++ )
+  { 
+    for( int i = 0; i < sizeX; i++ )
+    { 
+      VCardSpriteArray[counter] = VCardSpritesheet.get(i*frameX, k*frameY, frameX, frameY);
+      counter++;
+    }
   }
   
   

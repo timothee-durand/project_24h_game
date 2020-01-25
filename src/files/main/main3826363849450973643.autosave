@@ -4,25 +4,27 @@ PImage persoL3;
 PImage persoR;
 PImage fondMsg;
 
-<<<<<<< HEAD
 int age;
-String textMsg; //<>// //<>//
-=======
-
 String textMsg; //<>//
->>>>>>> ffe44a95181186ab389e24fed76dea5c75812acf
 ArrayList <PImage>persos;
 card UneCarteTest;
+
+boolean inGame = true;
 
 String path = "/assets/ui/";
 
 
 void setup() {
    
+<<<<<<< HEAD
+=======
    fullScreen();
    noSmooth();
+>>>>>>> b0b18178ce05e8b2cb9d592408101f613871ff58
 
-   persoL1 = loadImage(path+"jose2.png");
+
+
+   persoL1 = loadImage(path+"jose1.png");
    
    persoL2 = loadImage(path+"jose2.png");
    
@@ -34,6 +36,7 @@ void setup() {
    
    
    textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
+    age = 0;
    UneCarteTest = new card("0");
    
    font = createFont("ARCADECLASSIC.TTF", 32);
@@ -43,11 +46,29 @@ void setup() {
 
 void draw() {
   background(0);
+<<<<<<< HEAD
+   //<>// //<>//
+  
+  if ( inGame == true ) {
+    putBackground("background_classe");
+    drawInterface();
+    getGoodPerso();
+    putPnjAtRight("0");
+    UneCarteTest.draw();
+  } else {
+    
+    
+    
+    
+    
+  }
+=======
   putBackground("background_classe");
-  drawInterface(); //<>// //<>//
+  drawInterface();
   getGoodPerso();
   putPnjAtRight("0");
   UneCarteTest.draw();
+>>>>>>> b0b18178ce05e8b2cb9d592408101f613871ff58
 
 }
 
@@ -71,18 +92,24 @@ void drawInterface() {
    textSize(32);
   fill(255);
   stroke(204, 102, 0);
-  String textAge = "Age " + G_player_age + "  ans";
+  String textAge = "Age " + age + "  ans";
 
   textFont(font);
   textSize(0.05*displayHeight);
   text(textAge, posAgeX+0.10*displayWidth, posAgeY+0.05*displayHeight);
  
  //affichage message
- float widthMsg = displayWidth - (persoR.width *2 + 0.05*displayWidth); 
-  image(fondMsg, persoR.width+0.01*displayWidth,  0.78*displayHeight, widthMsg, (float(fondMsg.height)/float(fondMsg.width))*widthMsg);
+<<<<<<< HEAD
+ float widthMsg =displayWidth - (persoR.width *2 + 0.01*displayWidth) ;
+ image(fondMsg, persoR.width+0.01*displayWidth, 0.77*displayHeight, widthMsg , (float(fondMsg.height)/float(fondMsg.width))*widthMsg);
+  PFont font2 = createFont("yoster.ttf", 32);
+  textFont(font2); 
+=======
+  
  textFont(font2); 
+>>>>>>> b0b18178ce05e8b2cb9d592408101f613871ff58
  textSize(20);
- text(textMsg, persoR.width+0.02*displayWidth, 0.80*displayHeight, widthMsg -0.015*displayWidth, 0.20*displayHeight);
+ text(textMsg, persoR.width+0.02*displayWidth, 0.80*displayHeight, displayWidth - (persoR.width *2 + 0.03*displayWidth), 0.20*displayHeight);
   
 
    

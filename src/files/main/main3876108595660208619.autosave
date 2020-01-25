@@ -4,9 +4,10 @@ PImage persoL3;
 PImage persoR;
 PImage fondMsg;
 
+ //<>//
 int timerForTransition;
 
-String textMsg; 
+String textMsg; //<>//
 String titleMsg;
 
 ArrayList <PImage>persos;
@@ -34,41 +35,31 @@ void setup() {
    
    
    textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
-   println("Creation de la carte");
    carte = new card("0");
-   println("carte loadé");
+   
    font = createFont("ARCADECLASSIC.TTF", 32);
    font2 = createFont("yoster.ttf", 32);
-   
-   changeCard("0");
-   
-   println("setup done");
    
 }
 
 
 void draw() {
   background(0);
-  //  playIntroScene();
-//  if (timerForTransition == 0){
-  println(carte.checkChoice());
-    if(carte.checkChoice() == -1) {
-      /*println(backgroundName);*/
-      putBackground(backgroundName);
-      getGoodPerso();
-      putPnjAtRight(pnjName);
-      drawInterface(); //<>// //<>//
-      carte.draw();
-    } 
- println("sortie de boucle");
+  playIntroScene();
+  //while(carte.checkChoice() ==-1) {
+  //putBackground(backgroundName);
+  //drawInterface(); //<>// //<>//
+  //getGoodPerso();
+  //putPnjAtRight(pnjName);
+  //carte.draw();
+  //} 
+  
+  
   //changeCard(str(carte.checkChoice()));
-   //}
-  //else {
-  // timerForTransition--; 
-  //}
     
-     
-}
+    
+    
+  }
   
   
   
@@ -104,11 +95,11 @@ void drawInterface() {
   text(textAge, posAgeX+0.10*displayWidth, posAgeY+0.05*displayHeight);
  
  //affichage message
- float widthMsg = displayWidth - (pnj.width *2 + 0.05*displayWidth); 
-  image(fondMsg, pnj.width+0.01*displayWidth,  0.78*displayHeight, widthMsg, (float(fondMsg.height)/float(fondMsg.width))*widthMsg);
+ float widthMsg = displayWidth - (persoR.width *2 + 0.05*displayWidth); 
+  image(fondMsg, persoR.width+0.01*displayWidth,  0.78*displayHeight, widthMsg, (float(fondMsg.height)/float(fondMsg.width))*widthMsg);
  textFont(font2); 
  textSize(20);
- text(textMsg, pnj.width+0.02*displayWidth, 0.80*displayHeight, widthMsg -0.015*displayWidth, 0.20*displayHeight);
+ text(textMsg, persoR.width+0.02*displayWidth, 0.80*displayHeight, widthMsg -0.015*displayWidth, 0.20*displayHeight);
   
 
    
@@ -139,8 +130,8 @@ void getGoodPerso() {
 }
 
 void putPnjAtRight(String pnjName) {
-  String path ="/assets/ui/";
-  pnj = loadImage(path + pnjName +  ".png");
+  String path ="/assets/cards/";
+  PImage pnj = loadImage(path + pnjName +  ".png");
   
   float widthPnj = 0.14*displayWidth;
   float heightPnj = (float(pnj.height)/float(pnj.width))*widthPnj;
@@ -155,25 +146,20 @@ void putBackground(String backgroundName) {
   background = loadImage(path+backgroundName+".png");
 
   image(background, 0, 0, displayWidth, displayHeight);
-  
 }
 
 void changeCard(String cardId) {
-  carte = new card(cardId);
+  card carte = new card (cardId);
   backgroundName = carte.getBA_Name();
-  println("backgroundname" + backgroundName);
-  pnjName = carte.getPNJ_Name();
-  println("pnjName" + pnjName);
-  textMsg = carte.getDi_Text(); 
-  println("textMsg" + textMsg);
+  /*pnjName = carte.;*/
+  textMsg = carte.getDi_Text(); //<>//
   titleMsg = carte.getDi_Title();
-  println("titleMsg " + titleMsg );
   G_player_age = int(carte.getAG_Age());
   timerForTransition = 30;
 }
 
-//void playIntroScene() {
-// putBackground();
+void playIntroScene() {
+ /*putBackground();*/
   
   
-//}
+}

@@ -56,20 +56,15 @@ public class card{
     if(lines[i].contains("[") )
     {
       simpleRead = (lines[i].substring(lines[i].indexOf("[")+1, lines[i].indexOf("]"))); //valeure sauvegardée pour une variable enregistrée sous une forme .nom[valeure]
-      while( simpleRead.charAt(0) == ' ' )
-      {
-        simpleRead.substring( 1, simpleRead.length() );
-      }
-      while( simpleRead.charAt(simpleRead.length()) == ' ' )
-      {
-        simpleRead.substring( 0, simpleRead.length()-1 );
-      }
+      
+      /*simpleRead.substring( 1, simpleRead.length()-2 );*/
+     
     }
     
     if( lines[i].contains("DI[") )
     {
-      m_Di_Title = simpleRead.substring(0, simpleRead.indexOf("|"));
-      m_Di_Text = simpleRead.substring(simpleRead.indexOf("|")+1, simpleRead.length());
+      m_Di_Title = simpleRead.substring(1, simpleRead.indexOf(" |"));
+      m_Di_Text = simpleRead.substring(simpleRead.indexOf("|")+2, simpleRead.length()-1);
       
       println("m_Di_Title : "+m_Di_Title);
       println("m_Di_Text : "+m_Di_Text);
@@ -77,33 +72,33 @@ public class card{
     
     if( lines[i].contains("EF[") )
     {
-      m_Ef_effect = simpleRead;
+      m_Ef_effect = simpleRead.substring(1, simpleRead.length()-1);
       println("m_Ef_effect : "+m_Ef_effect);
     }
     
     if( lines[i].contains("BA[") )
     {
-      m_BA_Name = simpleRead;
+      m_BA_Name = simpleRead.substring(1, simpleRead.length()-1);
       println("m_BA_Name : "+m_BA_Name);
     }
     
     if( lines[i].contains("PNJ[") )
     {
-      m_PNJ_Name = simpleRead;
+      m_PNJ_Name = simpleRead.substring(1, simpleRead.length()-1);
       println("m_PNJ_Name : "+m_PNJ_Name);
     }
     
     if( lines[i].contains("AG[") ) //age
     {
-      m_AG_Age = simpleRead;
+      m_AG_Age = simpleRead.substring(1, simpleRead.length()-1);
       println("m_AG_Age : "+m_AG_Age);
     };
     
     if( lines[i].contains("C1[") )
     {
-      m_C1[0] = simpleRead.substring(0, simpleRead.indexOf("|"));
-      m_C1[1] = simpleRead.substring(simpleRead.indexOf("|")+1, simpleRead.indexOf("/"));
-      m_C1[2] = simpleRead.substring(simpleRead.indexOf("/")+1, simpleRead.length());
+      m_C1[0] = simpleRead.substring(1, simpleRead.indexOf(" |"));
+      m_C1[1] = simpleRead.substring(simpleRead.indexOf("|")+2, simpleRead.indexOf(" /"));
+      m_C1[2] = simpleRead.substring(simpleRead.indexOf("/")+2, simpleRead.length()-1);
       
       println("m_C1[0] : "+m_C1[0]);
       println("m_C1[1] : "+m_C1[1]);
@@ -112,9 +107,9 @@ public class card{
     
     if( lines[i].contains("C2[") )
     {
-      m_C2[0] = simpleRead.substring(0, simpleRead.indexOf("|"));
-      m_C2[1] = simpleRead.substring(simpleRead.indexOf("|")+1, simpleRead.indexOf("/"));
-      m_C2[2] = simpleRead.substring(simpleRead.indexOf("/")+1, simpleRead.length());
+      m_C2[0] = simpleRead.substring(1, simpleRead.indexOf("|"));
+      m_C2[1] = simpleRead.substring(simpleRead.indexOf("|")+2, simpleRead.indexOf(" /"));
+      m_C2[2] = simpleRead.substring(simpleRead.indexOf("/")+2, simpleRead.length()-1);
       
       println("m_C2[0] : "+m_C2[0]);
       println("m_C2[1] : "+m_C2[1]);
@@ -123,9 +118,9 @@ public class card{
     
     if( lines[i].contains("C3[") )
     {
-      m_C3[0] = simpleRead.substring(0, simpleRead.indexOf("|"));
-      m_C3[1] = simpleRead.substring(simpleRead.indexOf("|")+1, simpleRead.indexOf("/"));
-      m_C3[2] = simpleRead.substring(simpleRead.indexOf("/")+1, simpleRead.length());
+      m_C3[0] = simpleRead.substring(1, simpleRead.indexOf(" |"));
+      m_C3[1] = simpleRead.substring(simpleRead.indexOf("|")+2, simpleRead.indexOf(" /"));
+      m_C3[2] = simpleRead.substring(simpleRead.indexOf("/")+2, simpleRead.length()-1);
       
       println("m_C3[0] : "+m_C3[0]);
       println("m_C3[1] : "+m_C3[1]);
@@ -134,9 +129,9 @@ public class card{
     
     if( lines[i].contains("C4[") )
     {
-      m_C4[0] = simpleRead.substring(0, simpleRead.indexOf("|"));
-      m_C4[1] = simpleRead.substring(simpleRead.indexOf("|")+1, simpleRead.indexOf("/"));
-      m_C4[2] = simpleRead.substring(simpleRead.indexOf("/")+1, simpleRead.length());
+      m_C4[0] = simpleRead.substring(1, simpleRead.indexOf(" |"));
+      m_C4[1] = simpleRead.substring(simpleRead.indexOf("|")+2, simpleRead.indexOf(" /"));
+      m_C4[2] = simpleRead.substring(simpleRead.indexOf("/")+2, simpleRead.length()-1);
       
       println("m_C4[0] : "+m_C4[0]);
       println("m_C4[1] : "+m_C4[1]);

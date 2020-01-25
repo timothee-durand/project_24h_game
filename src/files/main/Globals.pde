@@ -8,3 +8,6 @@ PImage background;
 
 PImage CardSpritesheet;
 PImage[] CardSpriteArray = new PImage[6*4];
+
+
+PImage pnj;

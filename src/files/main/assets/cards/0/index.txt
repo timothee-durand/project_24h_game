@@ -2,6 +2,7 @@
 EF[ IDdelEffet ]
 BA[ Name ]
 AG[ 8 ]
+PNG[ PNJ_1 ]
 C1[ Oui ! | Tu ne souhaite pas traîner avec des enfants avec un QI si faibles, plus tu vas vite plus tu aura le temps de refaire t'as vie ! / 6 ]
 C2[ Non... | Tu te rappelle que les cours du collège sont simples mais apportes tout de même des notions importantes que tu as oublié./ 7 ]
 C3[ null | null / null ]

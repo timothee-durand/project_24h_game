@@ -4,15 +4,16 @@ PImage persoL3;
 PImage persoR;
 PImage fondMsg;
 
-
-int age; //<>//
-
+ //<>//
+int timerForTransition;
 
 String textMsg; //<>//
+String titleMsg;
 
 ArrayList <PImage>persos;
-card UneCarteTest;
-short thisCardId = 0;
+card carte;
+String backgroundName;
+String pnjName;
 
 String path = "/assets/ui/";
 
@@ -34,22 +35,30 @@ void setup() {
    
    
    textMsg = "Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte Un texte d'exmple de message de carte";
-   UneCarteTest = new card("0");
+   carte = new card("0");
    
    font = createFont("ARCADECLASSIC.TTF", 32);
    font2 = createFont("yoster.ttf", 32);
+   
 }
 
 
 void draw() {
   background(0);
+  playIntroScene();
+  //while(carte.checkChoice() ==-1) {
+  //putBackground(backgroundName);
+  //drawInterface(); //<>// //<>//
+  //getGoodPerso();
+  //putPnjAtRight(pnjName);
+  //carte.draw();
+  //} 
   
-  while(UneCarteTest.checkChoice() ==-1) {
-  putBackground(thisCardId);
-  drawInterface(); //<>// //<>//
-  getGoodPerso();
-  putPnjAtRight(thisCardId);
-  UneCarteTest.draw();
+  
+  //changeCard(str(carte.checkChoice()));
+    
+    
+    
   }
   
   
@@ -57,8 +66,7 @@ void draw() {
   
   
   
-  
-}
+
 
 
 
@@ -121,9 +129,9 @@ void getGoodPerso() {
   
 }
 
-void putPnjAtRight(short cardID) {
+void putPnjAtRight(String pnjName) {
   String path ="/assets/cards/";
-  PImage pnj = loadImage(path + cardID + "/img/" + "img.jpg");
+  PImage pnj = loadImage(path + pnjName +  ".png");
   
   float widthPnj = 0.14*displayWidth;
   float heightPnj = (float(pnj.height)/float(pnj.width))*widthPnj;
@@ -133,9 +141,25 @@ void putPnjAtRight(short cardID) {
   
 }
 
-void putBackground(short cardId) {
+void putBackground(String backgroundName) {
   
-  background = loadImage(path+cardId+".png");
+  background = loadImage(path+backgroundName+".png");
 
   image(background, 0, 0, displayWidth, displayHeight);
+}
+
+void changeCard(String cardId) {
+  card carte = new card (cardId);
+  backgroundName = carte.getBA_Name();
+  pnjName = carte.;
+  textMsg = carte.getDi_Text(); //<>//
+  titleMsg = carte.getDi_Title();
+  G_player_age = int(carte.getAG_Age());
+  timerForTransition = 30;
+}
+
+void playIntroScene() {
+ putBackground();
+  
+  
 }

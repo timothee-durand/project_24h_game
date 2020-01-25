@@ -162,13 +162,41 @@ public class card{
     
     push();
     fill( 0, 0, 0, 0 );
-    if( m_pos.x <= -displayWidth/2/2 )
+    if( m_pos.x <= -displayWidth/2/2 || m_pos.y <= -displayHeight/2/2 || m_pos.x >= displayWidth/2/2-1|| m_pos.y >= displayHeight/2/2-1 )
     {
       fill( 0, 0, 0, 250 );
     }
     textAlign(CENTER);
-    text(m_C1[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
-    text(m_C1[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    if( m_pos.x <= -displayWidth/2/2 )
+      text(m_C1[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    if( m_pos.x >= displayWidth/2/2-1 )
+      text(m_C2[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    if( m_pos.y <= -displayHeight/2/2 )
+    {
+      image(VCardSpriteArray[31], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300);
+      text(m_C3[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    }
+    if(m_pos.y >= displayHeight/2/2-1 )
+    {
+      image(VCardSpriteArray[31], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300);
+      text(m_C4[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    }
+    
+    textAlign(LEFT);
+    
+    if( m_pos.x <= -displayWidth/2/2 )
+      text(m_C1[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+100, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    if( m_pos.x >= displayWidth/2/2-1 )
+      text(m_C2[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+100, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    if( m_pos.y <= -displayHeight/2/2 )
+    {
+      text(m_C3[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+100, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    }
+    if(m_pos.y >= displayHeight/2/2-1 )
+    {
+      text(m_C4[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+100, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    }
+    
     pop();
     /*m_C1[1];*/
     /*String[] m_C2 = { "null", "null", "null" };
@@ -201,7 +229,7 @@ public class card{
           m_pos.y = mouseY-m_BuffposMouse.y;
       }
       
-     else if( m_pos.x > 0 && m_pos.y == 0 ||  m_pos.x < 0 && m_pos.y == 0 ) //droite / gauche
+     else if( m_pos.x > 0 && m_pos.y == 0  && m_C2[1].indexOf("null") != 0  ||  m_pos.x < 0 && m_pos.y == 0 && m_C1[1].indexOf("null") != 0  ) //droite / gauche
      {
         m_pos.x = (mouseX-displayWidth/2)*m_dragLimit;
         HAnim = ( abs( floor (mouseX-displayWidth/2)/((displayWidth/2)/20) ));
@@ -221,7 +249,7 @@ public class card{
           m_BuffReturnedAnswer = -1;
         }
      }
-     else if( m_pos.y > 0 && m_pos.x == 0  || m_pos.y < 0  && m_pos.x == 0) //haut / bas
+     else if( m_pos.y > 0 && m_pos.x == 0 && m_C4[1].indexOf("null") != 0 || m_pos.y < 0  && m_pos.x == 0  && m_C3[1].indexOf("null") != 0  ) //haut / bas
      {
         m_pos.y = (mouseY-displayHeight/2)*m_dragLimit;
         VAnim = ( abs( ceil ( mouseY-displayHeight/2)/((displayHeight/2)/31) ));

@@ -7,7 +7,7 @@ public class card{
   String m_Di_Text;
   String m_BA_Name; //background
   String m_AG_Age; //age perso
-  String m_PNJ_Name; //nom pnj
+  String m_PNJ_Name = "null"; //nom pnj
   
   String m_Ef_effect;
   
@@ -56,6 +56,14 @@ public class card{
     if(lines[i].contains("[") )
     {
       simpleRead = (lines[i].substring(lines[i].indexOf("[")+1, lines[i].indexOf("]"))); //valeure sauvegardée pour une variable enregistrée sous une forme .nom[valeure]
+      while( simpleRead.charAt(0) == ' ' )
+      {
+        simpleRead.substring( 1, simpleRead.length() );
+      }
+      while( simpleRead.charAt(simpleRead.length()) == ' ' )
+      {
+        simpleRead.substring( 0, simpleRead.length()-1 );
+      }
     }
     
     if( lines[i].contains("DI[") )
@@ -79,7 +87,7 @@ public class card{
       println("m_BA_Name : "+m_BA_Name);
     }
     
-    if( lines[i].contains("PNJ_Name[") )
+    if( lines[i].contains("PNJ[") )
     {
       m_PNJ_Name = simpleRead;
       println("m_PNJ_Name : "+m_PNJ_Name);

@@ -24,9 +24,12 @@ public class card{
   PVector m_BuffposMouse = new PVector( 0, 0 );
   
   String m_Id = "";
-  short m_dragLimit = 100;
+  float  m_dragLimit = 0.5;
   short m_BuffReturnedAnswer = -1;
-  short m_ReturnedAnswer = -1;
+  String m_ReturnedAnswer = "-1";
+  
+  int HAnim = 0;
+  int VAnim = 0;
   
   //constructeur
   
@@ -34,13 +37,14 @@ public class card{
   {
     m_Id = ID;
     this.load( ID );
+    loadSprite();
   }
   
   //methodes
   
   void load( String ID )
   {
-    m_img = loadImage("assets/cards/"+ID+"/img/img.jpg");
+    /*m_img = loadImage("assets/cards/"+ID+"/img/img.jpg");*/
     
     try{
     String[] lines = loadStrings("assets/cards/"+ID+"/index.txt");
@@ -107,7 +111,7 @@ public class card{
     
     if( lines[i].contains("C2[") )
     {
-      m_C2[0] = simpleRead.substring(1, simpleRead.indexOf("|"));
+      m_C2[0] = simpleRead.substring(1, simpleRead.indexOf(" |"));
       m_C2[1] = simpleRead.substring(simpleRead.indexOf("|")+2, simpleRead.indexOf(" /"));
       m_C2[2] = simpleRead.substring(simpleRead.indexOf("/")+2, simpleRead.length()-1);
       
@@ -149,12 +153,17 @@ public class card{
   
   public void draw()
   {
-    image(m_img, displayWidth/2-m_img.width/2+m_pos.x, displayHeight/2-m_img.height/2+m_pos.y);
+    if( m_pos.x != 0 )
+      image(CardSpriteArray[HAnim], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    if( m_pos.y != 0 )
+      image(VCardSpriteArray[VAnim], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300);
+    if( m_pos.y == 0 && m_pos.x == 0 )
+      image(CardSpriteArray[HAnim], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     
     choose();
   }
   
-  public short checkChoice()
+  public String checkChoice()
   {
     return m_ReturnedAnswer;
   }
@@ -173,23 +182,30 @@ public class card{
       if( m_pos.x == 0 && m_pos.y == 0 )
       {
         m_pos.x = mouseX-m_BuffposMouse.x;
-        m_pos.y = mouseY-m_BuffposMouse.y;
+        if( m_pos.x == 0 )
+          m_pos.y = mouseY-m_BuffposMouse.y;
       }
-      else if( m_pos.x > 0 ) //droite
+      /*else if( m_pos.x > 0 ) //droite
       {
-        /*println( " --" + str((exp((mouseX-m_BuffposMouse.x)/100))) + " : " + str(mouseX-m_BuffposMouse.x) +"-- ");*/
+        //println( " --" + str((exp((mouseX-m_BuffposMouse.x)/100))) + " : " + str(mouseX-m_BuffposMouse.x) +"-- ");
         if( (exp((mouseX-m_BuffposMouse.x)/100)) < (mouseX-m_BuffposMouse.x)/2 )
         {
           m_pos.x = (mouseX-m_BuffposMouse.x)-(exp((mouseX-m_BuffposMouse.x)/100));
           m_BuffReturnedAnswer = -1;
+          if( floor( m_pos.x/15 ) < 20)
+          {
+            HAnim = floor( m_pos.x/15 );
+          }
         }
         else
         {
-          //println("DROIT");
-          m_BuffReturnedAnswer = 0;
+          println("m_pos.x = "+ m_pos.x);
+          m_BuffReturnedAnswer = 1;
         }
+        
+        m_pos.x = mouseX*m_dragLimit-width/2;
       }
-      else if( m_pos.x < 0 ) //dgauche
+      else if( m_pos.x < 0 ) //gauche
       {
         if( (exp(abs(mouseX-m_BuffposMouse.x)/100)) < (abs(mouseX-m_BuffposMouse.x))/2 )
         {
@@ -199,7 +215,7 @@ public class card{
         else
         {
           //println("GAUCHE");
-          m_BuffReturnedAnswer = 1;
+          m_BuffReturnedAnswer = 0;
         }
       }
       else if( m_pos.y > 0 ) //si on descend
@@ -227,14 +243,22 @@ public class card{
           //println("HAUT");
           m_BuffReturnedAnswer = 2;
         }
-      }
-      
-      /*
-      if( m_pos.y < m_dragLimit && m_pos.y > -m_dragLimit && m_pos.x < m_dragLimit && m_pos.x > -m_dragLimit  )
-      {
-        m_pos.x = (mouseX-m_BuffposMouse.x)/exp(sqrt(m_pos.y*m_pos.y));
-        m_pos.y = (mouseY-m_BuffposMouse.y)/exp(sqrt(m_pos.x*m_pos.x));
       }*/
+     else if( m_pos.x > 0 && m_pos.y == 0 ||  m_pos.x < 0 && m_pos.y == 0 ) //droite
+     {
+        m_pos.x = (mouseX-displayWidth/2)*m_dragLimit;
+        HAnim = ( abs( floor (mouseX-displayWidth/2)/((displayWidth/2)/20) ));
+        println(m_pos.x);
+        if( m_pos.x >= displayWidth/2-1 )
+        {
+          
+        }
+     }
+     else if( m_pos.y > 0 && m_pos.x == 0  || m_pos.y < 0  && m_pos.x == 0) //droite
+     {
+        m_pos.y = (mouseY-displayHeight/2)*m_dragLimit;
+        VAnim = ( abs( ceil ( mouseY-displayHeight/2)/((displayHeight/2)/31) ));
+     }
       
       
     }
@@ -243,10 +267,14 @@ public class card{
       m_pos.x = 0;
       m_pos.y = 0;
       m_BuffActivateDragging = false;
+      HAnim = 0;
+      VAnim = 0;
     }
     else
     {
-      m_ReturnedAnswer = m_BuffReturnedAnswer;
+      println("m_BuffReturnedAnswer : "+ m_BuffReturnedAnswer);
+      m_ReturnedAnswer = this.getChoiceID( m_BuffReturnedAnswer );
+      println("m_ReturnedAnswer : "+ m_ReturnedAnswer);
       m_pos.x = 0;
       m_pos.y = 0;
       m_BuffActivateDragging = false;
@@ -319,12 +347,14 @@ public class card{
   
   String getChoiceID( short nb_Choice )
   {
+    println("getChoiceID start");
     if( nb_Choice == 0 )
     {
       return m_C1[2];
     }
     else if( nb_Choice == 1 )
     {
+      println("getChoiceID end1 : "+m_C2[2]);
       return m_C2[2];
     }
     else if( nb_Choice == 2 )

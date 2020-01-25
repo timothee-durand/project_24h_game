@@ -15,10 +15,19 @@ public class card{
   
   PImage m_img;
   
+  PVector m_pos = new PVector( 0, 0 );
+  
+  boolean m_BuffActivateDragging = false;
+  PVector m_BuffposMouse = new PVector( 0, 0 );
+  
+  String m_Id = "";
+  short m_dragLimit = 100;
+  
   //constructeur
   
   card( String ID )
   {
+    m_Id = ID;
     this.load( ID );
   }
   
@@ -114,7 +123,44 @@ public class card{
   
   public void draw()
   {
-    image(m_img, 0, 0);
+    image(m_img, displayWidth/2-m_img.width/2+m_pos.x, displayHeight/2-m_img.height/2+m_pos.y);
+    
+    choose();
+  }
+  
+  public void choose()
+  {
+    if( mousePressed && (mouseButton == LEFT) )
+    {
+      if( !m_BuffActivateDragging )
+      {
+        m_BuffposMouse.x = mouseX;
+        m_BuffposMouse.y = mouseY;
+        m_BuffActivateDragging = true;
+      }
+      
+      if( m_pos.x == 0 && m_pos.y == 0 )
+      {
+        m_pos.x = mouseX-m_BuffposMouse.x;
+        m_pos.y = mouseY-m_BuffposMouse.y;
+      }
+      else if( m_pos.y == 0 && m_pos.x < m_dragLimit || m_pos.y == 0 && m_pos.x > -m_dragLimit) //droite | gauche
+      {
+        m_pos.x = mouseX-m_BuffposMouse.x;
+      }
+      else if( m_pos.x == 0 && m_pos.y < m_dragLimit || m_pos.x == 0 && m_pos.y > -m_dragLimit )
+      {
+        m_pos.y = mouseY-m_BuffposMouse.y;
+      }
+      
+      
+    }
+    else
+    {
+      m_pos.x = 0;
+      m_pos.y = 0;
+      m_BuffActivateDragging = false;
+    }
   }
   
   //get methodes
@@ -203,6 +249,11 @@ public class card{
     {
       return null;
     }
+  }
+  
+  String getID()
+  {
+      return m_Id;
   }
   
   

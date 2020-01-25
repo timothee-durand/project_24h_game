@@ -22,6 +22,7 @@ public class card{
   
   String m_Id = "";
   short m_dragLimit = 100;
+  short m_ReturnedAnswer = -1;
   
   //constructeur
   
@@ -128,6 +129,11 @@ public class card{
     choose();
   }
   
+  public short checkChoice()
+  {
+    return m_ReturnedAnswer;
+  }
+  
   public void choose()
   {
     if( mousePressed && (mouseButton == LEFT) )
@@ -159,18 +165,22 @@ public class card{
           m_pos.x = (mouseX-m_BuffposMouse.x)+(exp(abs(mouseX-m_BuffposMouse.x)/100));
         }
       }
-      else if( m_pos.y > 0 )
+      else if( m_pos.y > 0 ) //si on descend
       {
         if( (exp((mouseY-m_BuffposMouse.y)/100)) < ((mouseY-m_BuffposMouse.y))/2 )
         {
           m_pos.y = (mouseY-m_BuffposMouse.y)-(exp((mouseY-m_BuffposMouse.y)/100));
         }
       }
-      else if( m_pos.y < 0 )
+      else if( m_pos.y < 0 ) //si on monte
       {
         if( (exp(abs(mouseY-m_BuffposMouse.y)/100)) < (abs(mouseY-m_BuffposMouse.y))/2 )
         {
           m_pos.y = (mouseY-m_BuffposMouse.y)+(exp(abs(mouseY-m_BuffposMouse.y)/100));
+        }
+        else
+        {
+          println("Validate");
         }
       }
       

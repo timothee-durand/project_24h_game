@@ -1,4 +1,4 @@
-DI[ Arrivé dans le passé | Un matin tu te réveille dans ton lit 50 ans en arrière, tes souvenirs intact, et avec des impressions de déjà vu pleins la tête, pourtant tu ne panique pas, très vite tu vois une opportunité, celle de refaçonner aa vie. ]
+﻿DI[ Arrivé dans le passé | Un matin tu te réveille dans ton lit 50 ans en arrière, tes souvenirs intact, et avec des impressions de déjà vu pleins la tête, pourtant tu ne panique pas, très vite tu vois une opportunité, celle de refaçonner aa vie. ]
 EF[ IDdelEffet ]
 BA[ bedroom ]
 AG[ 7 ]

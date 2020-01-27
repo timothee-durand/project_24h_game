@@ -81,7 +81,7 @@ void setup() {
    
   } catch  (Exception e) {
     JOptionPane.showMessageDialog(null, "Erreur", "Un fichier n'a pas pu être chargé !", JOptionPane.ERROR_MESSAGE);
- 
+    
 }
   // file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
    //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
@@ -146,3 +146,28 @@ void draw() {
 // println("sortie de boucle");
     
 }
+
+//void keyPressed() {
+//  switch (phaseInGame) {
+//    case 0 :
+//      phaseInGame = 1;
+//      break;
+//    case 1 : 
+//      if(isPlayCarton == false) {
+//         if (carton_timer < 0) {
+//            isPlayCarton = true;
+//            carton_timer = 30;
+//          }  
+//      }
+//      break;
+//      case 3 :
+//        if (credit_timer < 0) {
+//          changeCard("0");
+//          phaseInGame = 0;
+//          credit_timer = 30;
+//        }
+//      break;
+//      default: 
+//  }
+  
+//}

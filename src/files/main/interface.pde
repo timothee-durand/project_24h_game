@@ -156,9 +156,15 @@ void playIntroScene() {
 
   // text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
 
-  if ((keyPressed == true) || (mousePressed == true)) {
+  if (keyPressed == true) {
     phaseInGame = 1;
   } 
+  
+  //if(mousePressed == true) {
+  //  phaseInGame = 1;
+  //}
+ 
+ 
 }
 
 void showEndPannel() {

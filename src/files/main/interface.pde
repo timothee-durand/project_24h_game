@@ -337,10 +337,10 @@ void playAmbianceMusic() {
 
 void playTuto() {
   if( (valAnimTuto <= 150) && (valAnimTuto >= 0)) {
-    println("+");
+    //println("+");
     animTuto += 5;
   } else if ((valAnimTuto >= 150) && (valAnimTuto <= 300)) {
-    println("-");
+    //println("-");
     animTuto -= 5;
   } else {
      valAnimTuto = 0;
@@ -354,6 +354,6 @@ void playTuto() {
 
   image(flecheTutoG, displayWidth/2 - flecheX , displayHeight/2, displayWidth*0.05, flecheHeight);
   
-  println("avalAnimTuto = " + valAnimTuto);
+  //println("avalAnimTuto = " + valAnimTuto);
   valAnimTuto += 8;
 }

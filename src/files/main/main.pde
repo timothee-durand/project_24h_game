@@ -64,11 +64,16 @@ void setup() {
    
    backgroundCarton = loadImage(path +"Décors/"+"bureau.png");
    parchemin= loadImage(path + "Autres/" +"parchemin.png");
-   chronometre_carton = loadImage(path + "Autres/" +"chrono.png");
-   
+   //chronometre_carton = loadImage(path + "Autres/" +"chrono.png");
+   flecheTutoD = loadImage(path + "Autres/" +"flecheD.png");
+   flecheTutoG = loadImage(path + "Autres/" +"flecheG.png");
    
    fondAccueil = loadImage(path +"Décors/"+ "fond_accueil.png");
    fondFin = loadImage(path +"Décors/"+ "fond_fin.png");
+   
+   font = createFont(path+"/fonts/"+"8-bit-pusab.ttf", 32);
+   font2 = createFont(path+"/fonts/"+"manaspc.ttf", 32);
+   fontCarton = createFont(path+"/fonts/"+"manaspc.ttf", 12);
    
    ambiance_music_player = minim.loadFile(path + "audio/"+"musique_ambiance.mp3");
    
@@ -107,7 +112,7 @@ void draw() {
 
     if(phaseInGame == 1) {
         
-     if(isPlayCarton == false) {
+    if(isPlayCarton == false) {
         playCarton();
         playOtherMusic();
     } else {

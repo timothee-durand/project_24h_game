@@ -4,6 +4,7 @@ int G_player_age = 7;
 
 PFont font;
 PFont font2;
+PFont fontCarton;
 PImage background;
 
 PImage CardSpritesheet;
@@ -18,11 +19,15 @@ PImage pnj;
 PImage fondAccueil;
 PImage fondFin;
 
-PImage chronometre_carton;
+//PImage chronometre_carton;
+PImage flecheTutoD;
+PImage flecheTutoG;
 
 int phaseInGame = 0; 
 
-boolean isMusiqueLaunched = false;
+boolean playTuto = true;
+int animTuto = 0;
+int valAnimTuto = 0;
 
 int credit_timer = 30;
 int carton_timer = 30;

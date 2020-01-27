@@ -2,15 +2,14 @@
 
 
 
-void mainGameLoop () {
-  if ( isMusiqueLaunched == false) {
-    //file.loop();
-    isMusiqueLaunched = true;
-  }
+void mainGameLoop () { 
   putBackground(backgroundName);
   getGoodPerso();
   putPnjAtRight(pnjName);
   drawInterface();
+  if( playTuto == true) {
+    playTuto();
+  }
   carte.draw();
 }
 
@@ -45,6 +44,7 @@ void drawInterface() {
   textFont(font2); 
   fill(0);
   textSize(45);
+  textAlign(CENTER);
   text(titleMsg, (displayWidth-( widthMsg -0.02*displayWidth))/2, 0.81*displayHeight, widthMsg -0.02*displayWidth, 0.20*displayHeight);
 
 
@@ -110,6 +110,11 @@ void putBackground(String backgroundName) {
 
 
 void changeCard(String cardId) {
+  if(cardId.equals("0")) {
+    playTuto = true;
+  } else {
+    playTuto = false;
+  }
 
   carte = new card(cardId);
 
@@ -126,10 +131,6 @@ void changeCard(String cardId) {
 }
 
 void playIntroScene() {
-  if ( isMusiqueLaunched == false) {
-    // endMusique.play();
-    isMusiqueLaunched = true;
-  }
   fill(255);
   //textFont(font);
   //textAlign(CENTER);
@@ -155,36 +156,13 @@ void playIntroScene() {
 
   // text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
 
-  if ((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.45*displayHeight) && (mouseY<0.55*displayHeight)) {
-    //fill(150);
-    //text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
-    if (mousePressed == true) {
-      phaseInGame = 1;
-      //endMusique.stop();
-    }
-  }
-
   if ((keyPressed == true) || (mousePressed == true)) {
     phaseInGame = 1;
   } 
-
-  //if((mouseX>displayWidth*0.30) && (mouseX<displayWidth*0.70) && (mouseY>0.56*displayHeight) && (mouseY<0.65*displayHeight)) {
-  //  fill(150);
-  //  text("Quitter", 0, 0.60*displayHeight, displayWidth, 0.20*displayHeight);
-  //  if(mousePressed == true) {
-  //      endMusique.stop();
-  //      exit(); 
-
-  //  }
 }
 
 void showEndPannel() {
 
-  if ( isMusiqueLaunched == false) {
-    //endMusique.play();
-    isMusiqueLaunched = true;
-    println(isMusiqueLaunched);
-  }
 
   image(fondFin, 0, 0, displayWidth, displayHeight);
 
@@ -254,25 +232,37 @@ void playCredits() {
 void playCarton () {
 
   image(backgroundCarton, 0, 0, displayWidth, displayHeight);
+  
+  float widthParchemin = 0.36*displayWidth;
+  
+  float heightParchemin = (float(parchemin.height)/float(parchemin.width))*(widthParchemin);
 
-  image(parchemin, 0.05*displayWidth, 0.05*displayHeight, 0.46*displayWidth, (float(parchemin.height)/float(parchemin.width))*(0.46*displayWidth));
+  image(parchemin, 0.05*displayWidth, (displayHeight - heightParchemin) /2 , widthParchemin, heightParchemin);
 
   //float widthChrono = 0.10*displayWidth;
   //float heightChrono = (float(chronometre_carton.height)/float(chronometre_carton.width))*(widthChrono);
 
   //image(chronometre_carton, displayWidth - widthChrono - 0.005 *displayWidth, displayHeight - heightChrono - 0.005 *displayWidth, widthChrono, heightChrono);
 
-  String msgCarton = "José,\n\n votre vie est peut-être médiocre, votre bureau miteux et votre femme infidèle mais votre destinée ne s'arrête pas ici… \n\nVotre vie touche à sa fin mais peut-être pour vous se présentera bientôt l’occasion de commencer un nouveau chemin. \n\n Nous n’avons finalement qu’une chose à dire : bon voyage !\n\nSigné : Les Créateurs";
+  String msgCarton = "José,\n\nVotre vie est peut-être médiocre, votre bureau miteux et votre femme infidèle mais votre destinée ne s'arrête pas ici… \n\nAjourd'hui, elle touche à sa fin mais peut-être pour vous se présentera bientôt l’occasion de commencer un nouveau chemin. \n\n Nous n’avons finalement qu’une chose à dire : bon voyage !\n\nSigné : Les Créateurs";
 
-  textSize(70);
-  textFont(font2);
+  
+  textFont(fontCarton);
+  textSize(3*12);
   textAlign(LEFT);
   fill(255);
-  text(msgCarton, 0.13*displayWidth, 0.4*displayHeight, 0.30*displayWidth, (float(parchemin.height)/float(parchemin.width))*(0.30*displayWidth));
+  text(msgCarton, 0.11*displayWidth, ((displayHeight - heightParchemin * 0.70) /2), widthParchemin*0.67, heightParchemin * 0.90);
   //fill(0);
   //text(str(carton_timer/1000), displayWidth - widthChrono + widthChrono/2, displayHeight - heightChrono + heightChrono/2 , 0.50*widthChrono, 0.50*heightChrono);
 
-
+  if (carton_timer < 0) {
+    fill(255);
+    textFont(font);
+    textAlign(CENTER);
+    textSize(0.04*displayHeight);
+    text("Passer", 0.90*displayWidth, 0.90*displayHeight);
+    
+  }
 
 
   if ((keyPressed == true) || (mousePressed == true)) {
@@ -289,22 +279,66 @@ void playCarton () {
 
 void playOtherMusic() {  
   if (ambiance_music_player.isPlaying() == true) {
-    ambiance_music_player.pause();
-    ambiance_music_player.rewind();
+    try {
+      ambiance_music_player.pause();
+      ambiance_music_player.rewind();
+    
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du jeu n'a pas pu être mis en pause !", JOptionPane.ERROR_MESSAGE);
+      phaseInGame = 0;
+    }
   }
 
   if ( other_music_player.isPlaying() == false ) {
-    other_music_player.loop();
+    try  {
+      other_music_player.loop();
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du début/de la fin n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
+      phaseInGame = 0;
+    }
   }
 }
 
 void playAmbianceMusic() {  
   if (other_music_player.isPlaying() == true) {
-    other_music_player.pause();
-    other_music_player.rewind();
+    try {
+      other_music_player.pause();
+      other_music_player.rewind();
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du début/de la fin n'a pas pu être mis en pause !", JOptionPane.ERROR_MESSAGE);
+      phaseInGame = 0;
+    }
   }
 
   if ( ambiance_music_player.isPlaying() == false ) {
-    ambiance_music_player.loop();
+    try {
+      ambiance_music_player.loop();
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du jeu n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
+      phaseInGame = 0;
+    }
   }
+}
+
+void playTuto() {
+  if( (valAnimTuto <= 150) && (valAnimTuto >= 0)) {
+    println("+");
+    animTuto += 5;
+  } else if ((valAnimTuto >= 150) && (valAnimTuto <= 300)) {
+    println("-");
+    animTuto -= 5;
+  } else {
+     valAnimTuto = 0;
+     animTuto = 0;
+  }
+  
+  float flecheX = 0.30*displayWidth + animTuto;
+  float flecheHeight = (float(flecheTutoD.height)/float(flecheTutoD.width))*displayWidth*0.05;
+  image(flecheTutoD, displayWidth/2 + flecheX - displayWidth*0.05 , displayHeight/2, displayWidth*0.05, flecheHeight);
+  
+
+  image(flecheTutoG, displayWidth/2 - flecheX , displayHeight/2, displayWidth*0.05, flecheHeight);
+  
+  println("avalAnimTuto = " + valAnimTuto);
+  valAnimTuto += 8;
 }

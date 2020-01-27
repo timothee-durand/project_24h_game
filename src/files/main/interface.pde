@@ -218,6 +218,15 @@ void playCredits() {
   text("Céleste DESBRUS, MMI1", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
   text("Garion TANGUY, MMI1 / Etienne JUBILADO, MMI1 / Tania ANDRE, MMI1", 0, 0.70*displayHeight, displayWidth, 0.20*displayHeight);
   text("Allan PINOT, MMI1 / Timothée DURAND, MMI1", 0, 0.90*displayHeight, displayWidth, 0.20*displayHeight);
+  
+ if (credit_timer < 0) {
+    fill(255);
+    textFont(font);
+    textAlign(CENTER);
+    textSize(0.04*displayHeight);
+    text("Passer", 0.90*displayWidth, 0.90*displayHeight);
+    
+  }
 
   if ((keyPressed == true) || (mousePressed == true)) {
     if (credit_timer < 0) {

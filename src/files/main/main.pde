@@ -87,6 +87,7 @@ void setup() {
    //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
     //<>//
   surface.setIcon(logo);
+  frame.setTitle("Time to child");
 
 
    

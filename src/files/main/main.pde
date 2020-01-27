@@ -86,7 +86,7 @@ void setup() {
   // file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
    //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
     //<>//
-
+  surface.setIcon(logo);
 
 
    

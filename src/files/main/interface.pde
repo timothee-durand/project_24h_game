@@ -1,17 +1,17 @@
-
+ //<>// //<>//
 
 
 
 void mainGameLoop () {
   if ( isMusiqueLaunched == false) {
-    file.loop();
+    //file.loop();
     isMusiqueLaunched = true;
   }
   putBackground(backgroundName);
   getGoodPerso();
   putPnjAtRight(pnjName);
-  drawInterface(); //<>//
-  carte.draw(); //<>//
+  drawInterface();
+  carte.draw();
 }
 
 
@@ -127,7 +127,7 @@ void changeCard(String cardId) {
 
 void playIntroScene() {
   if ( isMusiqueLaunched == false) {
-    endMusique.play();
+    // endMusique.play();
     isMusiqueLaunched = true;
   }
   fill(255);
@@ -160,7 +160,7 @@ void playIntroScene() {
     //text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
     if (mousePressed == true) {
       phaseInGame = 1;
-      endMusique.stop();
+      //endMusique.stop();
     }
   }
 
@@ -181,7 +181,7 @@ void playIntroScene() {
 void showEndPannel() {
 
   if ( isMusiqueLaunched == false) {
-    endMusique.play();
+    //endMusique.play();
     isMusiqueLaunched = true;
     println(isMusiqueLaunched);
   }
@@ -215,7 +215,7 @@ void showEndPannel() {
     fill(150);
     text("Quitter", 0, 0.65*displayHeight, displayWidth, 0.20*displayHeight);
     if (mousePressed == true) {
-      endMusique.stop();
+      //endMusique.stop();
       exit();
     }
   }
@@ -242,40 +242,69 @@ void playCredits() {
   text("Allan PINOT, MMI1 / Timothée DURAND, MMI1", 0, 0.90*displayHeight, displayWidth, 0.20*displayHeight);
 
   if ((keyPressed == true) || (mousePressed == true)) {
-    if (timer == 0) {
+    if (credit_timer < 0) {
+      changeCard("0");
       phaseInGame = 0;
-      endMusique.stop();
-    } else {
-      timer--;
-    }
+      credit_timer = 30;
+    } 
   }
+  credit_timer--;
 }
 
 void playCarton () {
-
-  
-  println("carton");
 
   image(backgroundCarton, 0, 0, displayWidth, displayHeight);
 
   image(parchemin, 0.05*displayWidth, 0.05*displayHeight, 0.46*displayWidth, (float(parchemin.height)/float(parchemin.width))*(0.46*displayWidth));
 
-  String msgCarton = "José, votre vie est peut-être médiocre, votre bureau miteux et votre femme infidèle mais votre destinée ne s'arrête pas ici… Votre vie touche à sa fin mais peut-être pour vous se présentera bientôt l’occasion de commencer un nouveau chemin.Nous n’avons finalement qu’une chose à dire : bon voyage !";
+  //float widthChrono = 0.10*displayWidth;
+  //float heightChrono = (float(chronometre_carton.height)/float(chronometre_carton.width))*(widthChrono);
+
+  //image(chronometre_carton, displayWidth - widthChrono - 0.005 *displayWidth, displayHeight - heightChrono - 0.005 *displayWidth, widthChrono, heightChrono);
+
+  String msgCarton = "José,\n\n votre vie est peut-être médiocre, votre bureau miteux et votre femme infidèle mais votre destinée ne s'arrête pas ici… \n\nVotre vie touche à sa fin mais peut-être pour vous se présentera bientôt l’occasion de commencer un nouveau chemin. \n\n Nous n’avons finalement qu’une chose à dire : bon voyage !\n\nSigné : Les Créateurs";
 
   textSize(70);
   textFont(font2);
-    text(msgCarton, 0.13*displayWidth, 0.4*displayHeight, 0.30*displayWidth, (float(parchemin.height)/float(parchemin.width))*(0.30*displayWidth));
-   
-    
-    
-  
+  textAlign(LEFT);
+  fill(255);
+  text(msgCarton, 0.13*displayWidth, 0.4*displayHeight, 0.30*displayWidth, (float(parchemin.height)/float(parchemin.width))*(0.30*displayWidth));
+  //fill(0);
+  //text(str(carton_timer/1000), displayWidth - widthChrono + widthChrono/2, displayHeight - heightChrono + heightChrono/2 , 0.50*widthChrono, 0.50*heightChrono);
+
+
+
+
   if ((keyPressed == true) || (mousePressed == true)) {
-    if (timer == 0) {
-        isPlayCarton = true;
-        timer = 30;
-    } else {
-     timer--; 
+    if (carton_timer < 0) {
+      isPlayCarton = true;
+      carton_timer = 30;
     }
-    
-  } 
+  }
+
+  carton_timer--;
+
+  //println(carton_timer);
+}
+
+void playOtherMusic() {  
+  if (ambiance_music_player.isPlaying() == true) {
+    ambiance_music_player.pause();
+    ambiance_music_player.rewind();
+  }
+
+  if ( other_music_player.isPlaying() == false ) {
+    other_music_player.loop();
+  }
+}
+
+void playAmbianceMusic() {  
+  if (other_music_player.isPlaying() == true) {
+    other_music_player.pause();
+    other_music_player.rewind();
+  }
+
+  if ( ambiance_music_player.isPlaying() == false ) {
+    ambiance_music_player.loop();
+  }
 }

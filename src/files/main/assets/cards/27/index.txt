@@ -1,6 +1,6 @@
 DI[ Une belle balade. | Pendant ta balade tu connais un coin sympa, avec une cascade, propice à l'inspiration, mais tu aperçois un groupe de randonneur, une envie de discuter te tirailles. ]
 EF[ IDdelEffet ]
-BA[ nature ]
+BA[ rivière ]
 PNJ[ PNJ_2 ]
 AG[ 33 ]
 C1[ La cascade | Le souvenir de la cascade prend le dessus, tu vas t'y promener. / 28 ]

@@ -1,6 +1,6 @@
 DI[ UN RATÉ !!! | Ce livre est démoli par la critique et le public trouve les propos désobligeants et obscènes. ]
 EF[ IDdelEffet ]
-BA[ librairy ]
+BA[ library ]
 PNJ[ PNJ_1 ]
 AG[ 32 ]
 C1[ Un break ? | Tu penses qu'un break s'impose, il faut que tu changes d'air, tu pars en vacances. / 21 ]

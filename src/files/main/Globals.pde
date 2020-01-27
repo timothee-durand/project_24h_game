@@ -18,11 +18,14 @@ PImage pnj;
 PImage fondAccueil;
 PImage fondFin;
 
+PImage chronometre_carton;
+
 int phaseInGame = 0; 
 
 boolean isMusiqueLaunched = false;
 
-int timer = 30;
+int credit_timer = 30;
+int carton_timer = 30;
 
 Animation buttonPressMenu;
 

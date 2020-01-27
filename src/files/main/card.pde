@@ -148,6 +148,12 @@ public class card{
   catch( java.lang.RuntimeException e )
   {
     println("Le fichier de projet a rencontré un problème ou est introuvable.");
+    ID="0";
+    this.load( ID );
+    loadSprite();
+    JOptionPane.showMessageDialog(null,  "Désolé, les créateurs de ce jeu n'ont pas eu le temps de créer la carte numéro " + ID + "\r Dites-leur gentiment de la faire et peut-être qu'ils se bougeront le ***..." , "Erreur", JOptionPane.ERROR_MESSAGE);
+    phaseInGame = 0;
+    
   }
   }
   

@@ -1,7 +1,7 @@
-import processing.sound.*;
-SoundFile file;//musique principale
-SoundFile endMusique;
-
+//import processing.sound.*;
+//SoundFile file;//musique principale
+//SoundFile endMusique;
+import javax.swing.JOptionPane;
 
 
 PImage persoL1;
@@ -37,6 +37,7 @@ void setup() {
    fullScreen();
    noSmooth();
 
+  try {
   
    persoL1 = loadImage(path+"/Personnages/Héros/"+"child_heros.png");
    
@@ -57,8 +58,12 @@ void setup() {
    fondAccueil = loadImage(path +"/Décors/"+ "fond_accueil.png");
    fondFin = loadImage(path +"/Décors/"+ "fond_fin.png");
    
-   file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
-   endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
+  } catch  (Exception e) {
+    JOptionPane.showMessageDialog(null, "Erreur", "Un fichier n'a pas pu être chargé !", JOptionPane.ERROR_MESSAGE);
+ 
+}
+  // file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
+   //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
     //<>//
 
 
@@ -73,12 +78,13 @@ void setup() {
    font2 = createFont(path+"/fonts/"+"manaspc.ttf", 32);
    
    changeCard("0");
-   file.loop();
+   //file.loop();
   
    loadMenuAnim();
    println("setup done");
    
    println("is coraton :"+isPlayCarton);
+  // JOptionPane.showMessageDialog(null, "YES", "Setu DONE !", JOptionPane.INFORMATION_MESSAGE);
 }
 
 
@@ -95,14 +101,14 @@ void draw() {
     } else {
     if(int(carte.checkChoice()) == -1) {
       /*println(backgroundName);*/
-      endMusique.stop();
+     // endMusique.stop();
       
 
       mainGameLoop();
     
     } else if (carte.checkChoice().indexOf("end") != -1) {
       println("fin");
-      file.stop();
+   //   file.stop();
       isMusiqueLaunched = false;
       showEndPannel();
        
@@ -112,7 +118,7 @@ void draw() {
     }
     }
     } else if(phaseInGame == 2) {
-      file.stop();
+   //   file.stop();
       showEndPannel();
       
     } else if (phaseInGame == 0 ) {

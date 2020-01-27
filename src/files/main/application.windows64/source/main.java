@@ -3,7 +3,7 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
-import processing.sound.*; 
+import javax.swing.JOptionPane; 
 
 import java.util.HashMap; 
 import java.util.ArrayList; 
@@ -16,9 +16,9 @@ import java.io.IOException;
 
 public class main extends PApplet {
 
-
-SoundFile file;//musique principale
-SoundFile endMusique;
+//import processing.sound.*;
+//SoundFile file;//musique principale
+//SoundFile endMusique;
 
 
 
@@ -55,6 +55,7 @@ public void setup() {
    
    
 
+  try {
   
    persoL1 = loadImage(path+"/Personnages/Héros/"+"child_heros.png");
    
@@ -75,8 +76,12 @@ public void setup() {
    fondAccueil = loadImage(path +"/Décors/"+ "fond_accueil.png");
    fondFin = loadImage(path +"/Décors/"+ "fond_fin.png");
    
-   file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
-   endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
+  } catch  (Exception e) {
+    JOptionPane.showMessageDialog(null, "Erreur", "Un fichier n'a pas pu être chargé !", JOptionPane.ERROR_MESSAGE);
+ 
+}
+  // file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
+   //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
     //<>//
 
 
@@ -91,12 +96,13 @@ public void setup() {
    font2 = createFont(path+"/fonts/"+"manaspc.ttf", 32);
    
    changeCard("0");
-   file.loop();
+   //file.loop();
   
    loadMenuAnim();
    println("setup done");
    
    println("is coraton :"+isPlayCarton);
+  // JOptionPane.showMessageDialog(null, "YES", "Setu DONE !", JOptionPane.INFORMATION_MESSAGE);
 }
 
 
@@ -113,14 +119,14 @@ public void draw() {
     } else {
     if(PApplet.parseInt(carte.checkChoice()) == -1) {
       /*println(backgroundName);*/
-      endMusique.stop();
+     // endMusique.stop();
       
 
       mainGameLoop();
     
     } else if (carte.checkChoice().indexOf("end") != -1) {
       println("fin");
-      file.stop();
+   //   file.stop();
       isMusiqueLaunched = false;
       showEndPannel();
        
@@ -130,7 +136,7 @@ public void draw() {
     }
     }
     } else if(phaseInGame == 2) {
-      file.stop();
+   //   file.stop();
       showEndPannel();
       
     } else if (phaseInGame == 0 ) {
@@ -695,14 +701,14 @@ public class card{
 
 public void mainGameLoop () {
   if ( isMusiqueLaunched == false) {
-    file.loop();
+    //file.loop();
     isMusiqueLaunched = true;
   }
   putBackground(backgroundName);
   getGoodPerso();
   putPnjAtRight(pnjName);
-  drawInterface(); //<>//
-  carte.draw(); //<>//
+  drawInterface();
+  carte.draw();
 }
 
 
@@ -818,7 +824,7 @@ public void changeCard(String cardId) {
 
 public void playIntroScene() {
   if ( isMusiqueLaunched == false) {
-    endMusique.play();
+   // endMusique.play();
     isMusiqueLaunched = true;
   }
   fill(255);
@@ -851,7 +857,7 @@ public void playIntroScene() {
     //text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
     if (mousePressed == true) {
       phaseInGame = 1;
-      endMusique.stop();
+      //endMusique.stop();
     }
   }
 
@@ -872,7 +878,7 @@ public void playIntroScene() {
 public void showEndPannel() {
 
   if ( isMusiqueLaunched == false) {
-    endMusique.play();
+    //endMusique.play();
     isMusiqueLaunched = true;
     println(isMusiqueLaunched);
   }
@@ -906,7 +912,7 @@ public void showEndPannel() {
     fill(150);
     text("Quitter", 0, 0.65f*displayHeight, displayWidth, 0.20f*displayHeight);
     if (mousePressed == true) {
-      endMusique.stop();
+      //endMusique.stop();
       exit();
     }
   }
@@ -935,7 +941,7 @@ public void playCredits() {
   if ((keyPressed == true) || (mousePressed == true)) {
     if (timer == 0) {
       phaseInGame = 0;
-      endMusique.stop();
+      //endMusique.stop();
     } else {
       timer--;
     }

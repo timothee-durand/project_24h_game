@@ -82,8 +82,7 @@ void loadMenuAnim()
   
   short counter = 0;
   for( int k = 0; k < sizeY; k++ )
-  {   
-      println(" entree bpicle");
+  {  
       startButtonArray[counter] = startButtonSpritesheet.get( /*startButtonArray[0].width*/0, k*frameY, frameX, frameY);
       counter++;
   }

@@ -4,14 +4,14 @@
 
 void mainGameLoop () {
   if ( isMusiqueLaunched == false) {
-    file.loop();
+    //file.loop();
     isMusiqueLaunched = true;
   }
   putBackground(backgroundName);
   getGoodPerso();
   putPnjAtRight(pnjName);
-  drawInterface(); //<>//
-  carte.draw(); //<>//
+  drawInterface();
+  carte.draw();
 }
 
 
@@ -127,7 +127,7 @@ void changeCard(String cardId) {
 
 void playIntroScene() {
   if ( isMusiqueLaunched == false) {
-    endMusique.play();
+   // endMusique.play();
     isMusiqueLaunched = true;
   }
   fill(255);
@@ -160,7 +160,7 @@ void playIntroScene() {
     //text("Jouer", 0, 0.50*displayHeight, displayWidth, 0.20*displayHeight);
     if (mousePressed == true) {
       phaseInGame = 1;
-      endMusique.stop();
+      //endMusique.stop();
     }
   }
 
@@ -181,7 +181,7 @@ void playIntroScene() {
 void showEndPannel() {
 
   if ( isMusiqueLaunched == false) {
-    endMusique.play();
+    //endMusique.play();
     isMusiqueLaunched = true;
     println(isMusiqueLaunched);
   }
@@ -215,7 +215,7 @@ void showEndPannel() {
     fill(150);
     text("Quitter", 0, 0.65*displayHeight, displayWidth, 0.20*displayHeight);
     if (mousePressed == true) {
-      endMusique.stop();
+      //endMusique.stop();
       exit();
     }
   }
@@ -244,7 +244,7 @@ void playCredits() {
   if ((keyPressed == true) || (mousePressed == true)) {
     if (timer == 0) {
       phaseInGame = 0;
-      endMusique.stop();
+      //endMusique.stop();
     } else {
       timer--;
     }

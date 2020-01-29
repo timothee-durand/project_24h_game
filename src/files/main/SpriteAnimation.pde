@@ -91,7 +91,7 @@ void loadMenuAnim()
 
 void AnimateMenu()
 {
-  while( phaseInGame == 0 ){
+  while( /*phaseInGame == 0*/true ){
     /**/
     G_anim_menu++;
     

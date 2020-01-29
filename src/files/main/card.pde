@@ -24,7 +24,7 @@ public class card{
   PVector m_BuffposMouse = new PVector( 0, 0 );
   
   String m_Id = "";
-  float  m_dragLimit = 0.5;
+  float  m_dragLimit = 1;
   short m_BuffReturnedAnswer = -1;
   String m_ReturnedAnswer = "-1";
   
@@ -169,39 +169,49 @@ public class card{
     push();
     textLeading(30);
     fill( 0, 0, 0, 0 );
-    if( m_pos.x <= -displayWidth/2/2 || m_pos.y <= -displayHeight/2/2 || m_pos.x >= displayWidth/2/2-1|| m_pos.y >= displayHeight/2/2-1 )
+    if( m_pos.x <= -displayWidth/2/2/2 || m_pos.y <= -displayHeight/2/2/2 || m_pos.x >= displayWidth/2/2/2-1|| m_pos.y >= displayHeight/2/2/2-1 )
     {
+      /*println( "m_pos.x = " + m_pos.x +"<="+ "-displayWidth/2/2 = " + -displayWidth/2/2 );
+      println( "m_pos.x = " + m_pos.x +"<="+  "-displayWidth/2/2/2 = " + -displayWidth/2/2/2 );*/
       fill( 0, 0, 0, 250 );
     }
     textAlign(CENTER);
-    if( m_pos.x <= -displayWidth/2/2 )
+    if( m_pos.x <= -displayWidth/2/2/2 && m_C1[0].indexOf("end") != 0 )
       text(m_C1[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
-    if( m_pos.x >= displayWidth/2/2-1 )
+    if( m_pos.x >= displayWidth/2/2/2-1 && m_C2[0].indexOf("end") != 0 )
       text(m_C2[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
-    if( m_pos.y <= -displayHeight/2/2 )
-    {
+    if( m_pos.y <= -displayHeight/2/2/2 && m_C3[0].indexOf("end") != 0 )
+    { 
       image(VCardSpriteArray[31], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300);
       text(m_C3[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     }
-    if(m_pos.y >= displayHeight/2/2-1 )
+    if(m_pos.y >= displayHeight/2/2/2-1 && m_C4[0].indexOf("end") != 0 )
     {
       image(VCardSpriteArray[31], displayWidth/2-300/2+m_pos.x, displayHeight/2-((float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300)/2+m_pos.y, 300, (float(VCardSpriteArray[0].height)/float(VCardSpriteArray[0].width))*300);
       text(m_C4[0], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     }
+    if( m_C1[0].indexOf("end") == 0 || m_C2[0].indexOf("end") == 0 || m_C2[0].indexOf("end") == 0 || m_C2[0].indexOf("end") == 0 )
+    {
+      text("C'est la fin", displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    }
     
     textAlign(LEFT);
     
-    if( m_pos.x <= -displayWidth/2/2 )
+    if( m_pos.x <= -displayWidth/2/2/2 && m_C1[1].indexOf("end") != 0 )
       text(m_C1[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+150, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
-    if( m_pos.x >= displayWidth/2/2-1 )
+    if( m_pos.x >= displayWidth/2/2/2-1 && m_C2[1].indexOf("end") != 0 )
       text(m_C2[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+150, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
-    if( m_pos.y <= -displayHeight/2/2 )
+    if( m_pos.y <= -displayHeight/2/2/2 && m_C3[1].indexOf("end") != 0 )
     {
       text(m_C3[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+150, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     }
-    if(m_pos.y >= displayHeight/2/2-1 )
+    if(m_pos.y >= displayHeight/2/2/2-1 && m_C4[1].indexOf("end") != 0 )
     {
       text(m_C4[1], displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+150, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
+    }
+    if( m_C1[1].indexOf("end") == 0 || m_C2[1].indexOf("end") == 0 || m_C2[1].indexOf("end") == 0 || m_C2[1].indexOf("end") == 0 )
+    {
+      text( "Cette vie est-elle celle que vous espériez ? Sans doute aurait-elle pu être différente en aillant fait d'autres choix...", displayWidth/2-300/2+m_pos.x+50, displayHeight/2-((float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300)/2+m_pos.y+150, 200, (float(CardSpriteArray[0].height)/float(CardSpriteArray[0].width))*300);
     }
     
     pop();
@@ -218,10 +228,14 @@ public class card{
     return m_ReturnedAnswer;
   }
   
-  public void choose()
+  public void choose() //deplacer la carte et noter le choix effectué
   {
     if( mousePressed && (mouseButton == LEFT) )
     {
+      
+      /*m_pos.x = mouseX - displayWidth / 2;
+     m_pos.y = mouseY - displayHeight / 2;*/
+      
       if( !m_BuffActivateDragging )
       {
         m_BuffposMouse.x = mouseX;
@@ -229,7 +243,7 @@ public class card{
         m_BuffActivateDragging = true;
       }
        
-      if( m_pos.x == 0 && m_pos.y == 0 )
+      if( m_pos.x == 0 && m_pos.y == 0 ) //methode pour savoir dans quelle direction part la carte
       {
         m_pos.x = mouseX-m_BuffposMouse.x;
         if( m_pos.x == 0 )
@@ -238,15 +252,19 @@ public class card{
       
      else if( m_pos.x > 0 && m_pos.y == 0  && m_C2[1].indexOf("null") != 0  ||  m_pos.x < 0 && m_pos.y == 0 && m_C1[1].indexOf("null") != 0  ) //droite / gauche
      {
-        m_pos.x = (mouseX-displayWidth/2)*m_dragLimit;
-        HAnim = ( abs( floor (mouseX-displayWidth/2)/((displayWidth/2)/20) ));
+        m_pos.x = (mouseX-displayWidth/2)*m_dragLimit; //position de la carte
         
-        if( m_pos.x >= displayWidth/2/2-1 )
+        int buff_HAnim = ( abs( floor (mouseX-displayWidth/2)/((displayWidth/2/2/2)/20) ));
+        if( buff_HAnim > 20 )
+          buff_HAnim = 20;
+        HAnim = buff_HAnim;
+        
+        if( m_pos.x >= displayWidth/2/2/2-1 )
         {
           println("Droite C2");
           m_BuffReturnedAnswer = 1;
         }
-        else if(  m_pos.x <= -displayWidth/2/2 )
+        else if(  m_pos.x <= -displayWidth/2/2/2 )
         {
           println("Gauche C1");
           m_BuffReturnedAnswer = 0;
@@ -259,14 +277,18 @@ public class card{
      else if( m_pos.y > 0 && m_pos.x == 0 && m_C4[1].indexOf("null") != 0 || m_pos.y < 0  && m_pos.x == 0  && m_C3[1].indexOf("null") != 0  ) //haut / bas
      {
         m_pos.y = (mouseY-displayHeight/2)*m_dragLimit;
-        VAnim = ( abs( ceil ( mouseY-displayHeight/2)/((displayHeight/2)/31) ));
         
-        if( m_pos.y >= displayHeight/2/2-1 )
+        int buff_VAnim = ( abs( ceil ( mouseY-displayHeight/2)/((displayHeight/2/2/2)/31) ));
+        if( buff_VAnim > 31 )
+          buff_VAnim = 31;
+        VAnim = buff_VAnim;
+        
+        if( m_pos.y >= displayHeight/2/2/2-1 )
         {
           println("Bas C4");
           m_BuffReturnedAnswer = 3;
         }
-        else if(  m_pos.y <= -displayHeight/2/2  )
+        else if(  m_pos.y <= -displayHeight/2/2/2  )
         {
           println("Haut C3");
           m_BuffReturnedAnswer = 2;
@@ -291,7 +313,7 @@ public class card{
     {
       println("m_BuffReturnedAnswer : "+ m_BuffReturnedAnswer);
       m_ReturnedAnswer = this.getChoiceID( m_BuffReturnedAnswer );
-      println("m_ReturnedAnswer : "+ m_ReturnedAnswer);
+      println("m_ReturnedAnswer : \""+ m_ReturnedAnswer+"\"");
       m_pos.x = 0;
       m_pos.y = 0;
       m_BuffActivateDragging = false;

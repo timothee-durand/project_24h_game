@@ -75,13 +75,18 @@ void setup() {
    font2 = createFont(path+"/fonts/"+"manaspc.ttf", 32);
    fontCarton = createFont(path+"/fonts/"+"manaspc.ttf", 12);
    
-   ambiance_music_player = minim.loadFile(path + "audio/"+"musique_ambiance.mp3");
-   
-   other_music_player = minim.loadFile(path + "audio/"+"musique_fin.mp3");
-   
   } catch  (Exception e) {
     JOptionPane.showMessageDialog(null, "Erreur", "Un fichier n'a pas pu être chargé !", JOptionPane.ERROR_MESSAGE);
     
+}
+try {
+  
+  ambiance_music_player = minim.loadFile(path + "audio/"+"musique_ambiance.mp3");
+  other_music_player = minim.loadFile(path + "audio/"+"musique_fin.mp3");
+  
+   } catch  (Exception e) {
+     
+    JOptionPane.showMessageDialog(null, "Damn it !", "Le jeu n'a pas réussi à charger le son ! Mais ne t'en fais pas maintenant tu peux quand même jouer :)", JOptionPane.ERROR_MESSAGE);
 }
   // file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
    //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
@@ -121,7 +126,7 @@ void draw() {
       playAmbianceMusic(); 
       mainGameLoop();
     
-    } else if (carte.checkChoice().indexOf("end") != -1) {
+    } else if (carte.checkChoice().indexOf("end") == 0) {
       println("fin");
       
       phaseInGame=2;

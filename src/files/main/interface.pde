@@ -293,45 +293,36 @@ void playCarton () {
 }
 
 void playOtherMusic() {  
-  if (ambiance_music_player.isPlaying() == true) {
-    try {
+  try{
+    if (ambiance_music_player.isPlaying() == true) {
+      
       ambiance_music_player.pause();
       ambiance_music_player.rewind();
-    
-    } catch (Exception e) {
-      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du jeu n'a pas pu être mis en pause !", JOptionPane.ERROR_MESSAGE);
-      phaseInGame = 0;
     }
-  }
 
   if ( other_music_player.isPlaying() == false ) {
-    try  {
       other_music_player.loop();
-    } catch (Exception e) {
-      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du début/de la fin n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
-      phaseInGame = 0;
-    }
+  }
+  }catch (Exception e) {
+    JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du début/de la fin n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
+    phaseInGame = 0;
   }
 }
 
 void playAmbianceMusic() {  
-  if (other_music_player.isPlaying() == true) {
-    try {
+  try{  
+    if (other_music_player.isPlaying() == true) {
       other_music_player.pause();
       other_music_player.rewind();
-    } catch (Exception e) {
-      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du début/de la fin n'a pas pu être mis en pause !", JOptionPane.ERROR_MESSAGE);
-      phaseInGame = 0;
+    }
+  
+    if ( ambiance_music_player.isPlaying() == false ) {
+      ambiance_music_player.loop();
     }
   }
-
-  if ( ambiance_music_player.isPlaying() == false ) {
-    try {
-      ambiance_music_player.loop();
-    } catch (Exception e) {
+  catch (Exception e) {
       JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du jeu n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
       phaseInGame = 0;
-    }
   }
 }
 

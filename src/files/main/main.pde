@@ -67,6 +67,7 @@ void setup() {
    //chronometre_carton = loadImage(path + "Autres/" +"chrono.png");
    flecheTutoD = loadImage(path + "Autres/" +"flecheD.png");
    flecheTutoG = loadImage(path + "Autres/" +"flecheG.png");
+   flecheTutoH = loadImage(path + "Autres/" +"flecheH.png");
    
    fondAccueil = loadImage(path +"Décors/"+ "fond_accueil.png");
    fondFin = loadImage(path +"Décors/"+ "fond_fin.png");
@@ -86,7 +87,8 @@ try {
   
    } catch  (Exception e) {
      
-    JOptionPane.showMessageDialog(null, "Damn it !", "Le jeu n'a pas réussi à charger le son ! Mais ne t'en fais pas maintenant tu peux quand même jouer :)", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(null,"Le jeu n'a pas réussi à charger le son ! Mais ne t'en fais pas maintenant tu peux quand même jouer :)", "Damn it !", JOptionPane.ERROR_MESSAGE);
+    musicWork = false;
 }
   // file = new SoundFile(this, "/assets/audio/musique_ambiance.mp3");
    //endMusique = new SoundFile(this, "/assets/audio/musique_fin.mp3");
@@ -129,7 +131,7 @@ void draw() {
     } else if (carte.checkChoice().indexOf("end") == 0) {
       println("fin");
       
-      phaseInGame=2;
+      phaseInGame=3;
        
     } else {
       changeCard(carte.checkChoice());

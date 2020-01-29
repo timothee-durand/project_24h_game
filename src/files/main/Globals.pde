@@ -22,6 +22,7 @@ PImage fondFin;
 //PImage chronometre_carton;
 PImage flecheTutoD;
 PImage flecheTutoG;
+PImage flecheTutoH;
 
 int phaseInGame = 0; 
 
@@ -41,3 +42,5 @@ boolean isPlayCarton = false;
 
 PImage backgroundCarton;
 PImage parchemin;
+
+boolean musicWork = true;

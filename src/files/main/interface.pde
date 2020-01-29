@@ -7,10 +7,10 @@ void mainGameLoop () {
   getGoodPerso();
   putPnjAtRight(pnjName);
   drawInterface();
-  if( playTuto == true) {
-    playTuto();
-  }
+  
+  showArrows(carte, playTuto);
   carte.draw();
+ 
 }
 
 
@@ -190,7 +190,7 @@ void showEndPannel() {
     fill(150);
     text("Rejouer", 0, 0.55*displayHeight, displayWidth, 0.20*displayHeight);
     if (mousePressed == true) {
-      phaseInGame = 3;
+      phaseInGame = 0;
       isPlayCarton = false;
     }
   }
@@ -237,7 +237,7 @@ void playCredits() {
   if ((keyPressed == true) || (mousePressed == true)) {
     if (credit_timer < 0) {
       changeCard("0");
-      phaseInGame = 0;
+      phaseInGame = 2;
       credit_timer = 30;
     } 
   }
@@ -293,6 +293,7 @@ void playCarton () {
 }
 
 void playOtherMusic() {  
+  if(musicWork == true) {
   try{
     if (ambiance_music_player.isPlaying() == true) {
       
@@ -305,28 +306,33 @@ void playOtherMusic() {
   }
   }catch (Exception e) {
     JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du début/de la fin n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
+    musicWork = false;
     phaseInGame = 0;
+  }
   }
 }
 
 void playAmbianceMusic() {  
-  try{  
-    if (other_music_player.isPlaying() == true) {
-      other_music_player.pause();
-      other_music_player.rewind();
+  if(musicWork==true){
+    try{  
+      if (other_music_player.isPlaying() == true) {
+        other_music_player.pause();
+        other_music_player.rewind();
+      }
+    
+      if ( ambiance_music_player.isPlaying() == false ) {
+        ambiance_music_player.loop();
+      }
     }
-  
-    if ( ambiance_music_player.isPlaying() == false ) {
-      ambiance_music_player.loop();
+    catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du jeu n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
+        musicWork = false;
+        phaseInGame = 0;
     }
-  }
-  catch (Exception e) {
-      JOptionPane.showMessageDialog(null, "Erreur", "Le fichier audio du jeu n'a pas pu être joué !", JOptionPane.ERROR_MESSAGE);
-      phaseInGame = 0;
   }
 }
 
-void playTuto() {
+void showArrows(card Card, boolean isThisTuto) {
   if( (valAnimTuto <= 150) && (valAnimTuto >= 0)) {
     //println("+");
     animTuto += 5;
@@ -338,13 +344,37 @@ void playTuto() {
      animTuto = 0;
   }
   
-  float flecheX = 0.30*displayWidth + animTuto;
+  push();
+  if (isThisTuto != true) {//pour mettre fleches transparentes quand ce n'est pas le tuto
+    tint(255, 150);
+    
+  } else  {
+    tint(255,255);
+    
+  }
+  
+  String [] choix = {"", "", ""}; 
+  
+  for(short i = 0 ; i<3 ; i ++) {
+    choix [i] = Card.getChoiceTitle(i);
+  }
+  
+  float flecheX = 0.20*displayWidth + animTuto;
+  float flecheY = 0.20*displayWidth + animTuto;
   float flecheHeight = (float(flecheTutoD.height)/float(flecheTutoD.width))*displayWidth*0.05;
-  image(flecheTutoD, displayWidth/2 + flecheX - displayWidth*0.05 , displayHeight/2, displayWidth*0.05, flecheHeight);
+  println("displayHeight ="+displayHeight+",flecheHeihgt =" + flecheHeight);
   
-
-  image(flecheTutoG, displayWidth/2 - flecheX , displayHeight/2, displayWidth*0.05, flecheHeight);
+  if(choix[0].equals("null") == false) {
+    image(flecheTutoD, displayWidth/2 + flecheX - displayWidth*0.05 , displayHeight/2, displayWidth*0.05, flecheHeight);
+  }
+  if(choix[1].equals("null") == false) {
+    image(flecheTutoG, displayWidth/2 - flecheX , displayHeight/2 , displayWidth*0.05, flecheHeight);
+  }
+  if(choix[2].equals("null") == false) {
+    image(flecheTutoH, displayWidth/2, displayHeight/2 - flecheY, flecheHeight,  (float(flecheTutoH.height)/float(flecheTutoH.width))*flecheHeight);
+  }
   
+  pop();
   //println("avalAnimTuto = " + valAnimTuto);
   valAnimTuto += 8;
 }

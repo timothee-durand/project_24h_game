@@ -1,4 +1,4 @@
- //<>// //<>//
+ //<>// //<>// //<>//
 
 
 
@@ -362,7 +362,7 @@ void showArrows(card Card, boolean isThisTuto) {
   float flecheX = 0.20*displayWidth + animTuto;
   float flecheY = 0.20*displayWidth + animTuto;
   float flecheHeight = (float(flecheTutoD.height)/float(flecheTutoD.width))*displayWidth*0.05;
-  println("displayHeight ="+displayHeight+",flecheHeihgt =" + flecheHeight);
+  // println("displayHeight ="+displayHeight+",flecheHeihgt =" + flecheHeight);
   
   if(choix[0].equals("null") == false) {
     image(flecheTutoD, displayWidth/2 + flecheX - displayWidth*0.05 , displayHeight/2, displayWidth*0.05, flecheHeight);
@@ -371,7 +371,7 @@ void showArrows(card Card, boolean isThisTuto) {
     image(flecheTutoG, displayWidth/2 - flecheX , displayHeight/2 , displayWidth*0.05, flecheHeight);
   }
   if(choix[2].equals("null") == false) {
-    image(flecheTutoH, displayWidth/2, displayHeight/2 - flecheY, flecheHeight,  (float(flecheTutoH.height)/float(flecheTutoH.width))*flecheHeight);
+    image(flecheTutoH, displayWidth/2-flecheHeight/2, displayHeight/2 - flecheY, flecheHeight,  (float(flecheTutoH.height)/float(flecheTutoH.width))*flecheHeight);
   }
   
   pop();

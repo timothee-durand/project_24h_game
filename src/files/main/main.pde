@@ -1,4 +1,4 @@
-//import processing.sound.*;
+ //import processing.sound.*;
 //SoundFile file;//musique principale
 //SoundFile endMusique;
 import javax.swing.JOptionPane;
